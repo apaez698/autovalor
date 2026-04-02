@@ -23,17 +23,17 @@ wheels/
 .installed.cfg
 *.egg
 
-# Model files
-*.pkl
-*.joblib
-*.h5
-*.model
-
 # Data folders
 *.csv
 *.xlsx
 data/
-models/
+
+# Model artifacts (do not publish in public repos)
+models/*.pkl
+models/*.joblib
+models/*.h5
+models/*.model
+models/model_metadata.json
 
 # IDE
 .vscode/

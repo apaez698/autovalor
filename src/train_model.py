@@ -69,10 +69,11 @@ def build_normalized_dataframe(df: pd.DataFrame, include_target: bool = True) ->
         "marca": ["marca", "Marca"],
         "modelo": ["modelo", "Modelo"],
         "color": ["color", "Color"],
-        "provincia": ["provincia", "Agencia"],
-        "tipo": ["tipo", "Línea Negocio"],
+        "provincia": ["provincia", "Agencia", "Provincia"],
+        "tipo": ["tipo", "Línea Negocio", "Tipo Vehiculo"],
         "kilometraje": ["kilometraje", "Recorrido"],
-        "cilindrada": ["cilindrada"],
+        "cilindrada": ["cilindrada", "Cilindrada"],
+        "transmision": ["transmision", "Transmision"],
     }
     if include_target:
         source_map["target"] = ["precio en el que se compro", "Precio Final Editado"]
@@ -83,6 +84,9 @@ def build_normalized_dataframe(df: pd.DataFrame, include_target: bool = True) ->
             if candidate in data.columns:
                 normalized[target_col] = data[candidate]
                 break
+
+    if "modelo" not in normalized.columns:
+        normalized["modelo"] = "DESCONOCIDO"
 
     desc = data.get("Descripción", pd.Series("", index=data.index)).fillna("").astype(str)
     comments = data.get("Comentario", pd.Series("", index=data.index)).fillna("").astype(str)

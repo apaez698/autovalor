@@ -1,8 +1,12 @@
 """Flask REST API for vehicle valuation predictions."""
 
 import json
+import os
+import shutil
 from datetime import datetime
 from pathlib import Path
+from urllib.error import HTTPError, URLError
+from urllib.request import Request, urlopen
 
 import joblib
 import numpy as np
@@ -33,6 +37,11 @@ MODELS_DIR = BASE_DIR / "models"
 MODEL_PATH = MODELS_DIR / "vehicle_model.pkl"
 SCALER_PATH = MODELS_DIR / "vehicle_model_scaler.pkl"
 METADATA_PATH = MODELS_DIR / "model_metadata.json"
+MODEL_ARTIFACTS_BASE_URL = os.getenv("MODEL_ARTIFACTS_BASE_URL", "").strip().rstrip("/")
+MODEL_ARTIFACTS_TOKEN = os.getenv("MODEL_ARTIFACTS_TOKEN", "").strip()
+MODEL_ARTIFACTS_TIMEOUT_SECONDS = int(
+    os.getenv("MODEL_ARTIFACTS_TIMEOUT_SECONDS", "30")
+)
 
 DEFAULT_FEATURE_ORDER = FEATURE_ORDER
 
@@ -40,6 +49,7 @@ model = None
 scaler = None
 label_encoders = {}
 model_metadata = {}
+artifact_sync_error = None
 
 
 def error_response(message: str, status_code: int, details=None):
@@ -78,9 +88,67 @@ def metadata_from_encoders():
     return options
 
 
+def download_artifact(artifact_name: str, destination: Path):
+    """Download one artifact from the configured base URL."""
+    if not MODEL_ARTIFACTS_BASE_URL:
+        raise RuntimeError("MODEL_ARTIFACTS_BASE_URL is not configured")
+
+    url = f"{MODEL_ARTIFACTS_BASE_URL}/{artifact_name}"
+    headers = {}
+    if MODEL_ARTIFACTS_TOKEN:
+        headers["Authorization"] = f"Bearer {MODEL_ARTIFACTS_TOKEN}"
+
+    req = Request(url, headers=headers)
+    with urlopen(req, timeout=MODEL_ARTIFACTS_TIMEOUT_SECONDS) as response:
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        with destination.open("wb") as f:
+            shutil.copyfileobj(response, f)
+
+
+def ensure_remote_artifacts():
+    """Fetch missing model artifacts from a private remote location."""
+    if not MODEL_ARTIFACTS_BASE_URL:
+        return None
+
+    required = [
+        MODEL_PATH.name,
+        METADATA_PATH.name,
+        *[f"{column}_label_encoder.joblib" for column in CATEGORICAL_COLUMNS],
+    ]
+    optional = [SCALER_PATH.name]
+
+    missing_required = []
+
+    for artifact_name in required:
+        destination = MODELS_DIR / artifact_name
+        if destination.exists():
+            continue
+        try:
+            download_artifact(artifact_name, destination)
+        except (HTTPError, URLError, TimeoutError, OSError) as exc:
+            missing_required.append(f"{artifact_name}: {exc}")
+
+    for artifact_name in optional:
+        destination = MODELS_DIR / artifact_name
+        if destination.exists():
+            continue
+        try:
+            download_artifact(artifact_name, destination)
+        except (HTTPError, URLError, TimeoutError, OSError):
+            # Optional artifact, ignore failures.
+            pass
+
+    if missing_required:
+        return "Unable to download required artifacts: " + "; ".join(missing_required)
+
+    return None
+
+
 def load_resources_on_startup():
     """Load model, scaler, encoders, and metadata into memory."""
-    global model, scaler, label_encoders, model_metadata
+    global model, scaler, label_encoders, model_metadata, artifact_sync_error
+
+    artifact_sync_error = ensure_remote_artifacts()
 
     if MODEL_PATH.exists():
         with MODEL_PATH.open("rb") as f:
@@ -104,7 +172,7 @@ def load_resources_on_startup():
 
 def build_health_payload():
     """Build model readiness and inventory details for health endpoint."""
-    return {
+    payload = {
         "status": "ok",
         "service": "vehicle-valuation-api",
         "model": {
@@ -116,6 +184,9 @@ def build_health_payload():
             "encoders_loaded": sorted(label_encoders.keys()),
         },
     }
+    if artifact_sync_error:
+        payload["model"]["artifact_sync_error"] = artifact_sync_error
+    return payload
 
 
 def validate_predict_payload(payload):
