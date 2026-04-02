@@ -3,6 +3,7 @@ Model training module for vehicle valuation ML.
 """
 import os
 import pickle
+import json
 import pandas as pd
 import joblib
 import numpy as np
@@ -342,7 +343,131 @@ def train_model(X, y):
     print(f"MAPE: {mape:.4f}%")
     print(f"Model saved to {model_path}")
 
+    # Keep metrics attached to the model so metadata export can include them.
+    model.training_metrics = metrics
+
     return model, metrics
+
+
+def export_metadata(df: pd.DataFrame, model, feature_cols):
+    """Export safe model metadata for API/runtime validation.
+
+    Writes ``models/model_metadata.json`` with:
+    - Unique category values per categorical feature (from real training data)
+    - Feature importances aligned with ``feature_cols``
+    - Model metrics, when available on ``model.training_metrics``
+
+    The file intentionally excludes raw records.
+    """
+    categorical_columns = [
+        "marca",
+        "tipo",
+        "transmision",
+        "combustible",
+        "provincia",
+        "color",
+        "estado_motor",
+        "estado_carroceria",
+    ]
+
+    source_map = {
+        "anio": ["anio", "Año"],
+        "marca": ["marca", "Marca"],
+        "color": ["color", "Color"],
+        "provincia": ["provincia", "Agencia"],
+        "tipo": ["tipo", "Línea Negocio"],
+    }
+
+    data = df.copy()
+    normalized = pd.DataFrame(index=data.index)
+    for target_col, candidates in source_map.items():
+        for candidate in candidates:
+            if candidate in data.columns:
+                normalized[target_col] = data[candidate]
+                break
+
+    desc = data.get("Descripción", pd.Series("", index=data.index)).fillna("").astype(str)
+    comments = data.get("Comentario", pd.Series("", index=data.index)).fillna("").astype(str)
+    obs = data.get("Observación Precio", pd.Series("", index=data.index)).fillna("").astype(str)
+    combined_notes = (comments + " " + obs).str.upper()
+
+    if "transmision" not in normalized.columns:
+        normalized["transmision"] = "DESCONOCIDO"
+        normalized.loc[
+            desc.str.contains(r"\bT/A\b|\bCVT\b", case=False, regex=True),
+            "transmision",
+        ] = "AUTOMATICA"
+        normalized.loc[
+            desc.str.contains(r"\bT/M\b", case=False, regex=True),
+            "transmision",
+        ] = "MANUAL"
+
+    if "combustible" not in normalized.columns:
+        normalized["combustible"] = "DESCONOCIDO"
+        normalized.loc[
+            desc.str.contains(r"HYBRID|HSD|HIBRID", case=False, regex=True),
+            "combustible",
+        ] = "HIBRIDO"
+        normalized.loc[
+            desc.str.contains(r"CRDI|DIESEL", case=False, regex=True),
+            "combustible",
+        ] = "DIESEL"
+        normalized.loc[
+            desc.str.contains(r"TURBO|VVTI|DUALJET|BOOSTERJET|EFI", case=False, regex=True),
+            "combustible",
+        ] = "GASOLINA"
+
+    if "estado_motor" not in normalized.columns:
+        normalized["estado_motor"] = "DESCONOCIDO"
+        normalized.loc[
+            combined_notes.str.contains(r"FALLA|MECAN", regex=True),
+            "estado_motor",
+        ] = "REGULAR"
+        normalized.loc[
+            combined_notes.str.contains(r"MANTENIMIENTO|MANTENIMIENTOS EN CASA", regex=True),
+            "estado_motor",
+        ] = "BUENO"
+
+    if "estado_carroceria" not in normalized.columns:
+        normalized["estado_carroceria"] = "DESCONOCIDO"
+        normalized.loc[
+            combined_notes.str.contains(r"PINTAR|DETALLES", regex=True),
+            "estado_carroceria",
+        ] = "REGULAR"
+
+    unique_categories = {}
+    for column in categorical_columns:
+        if column not in feature_cols or column not in normalized.columns:
+            continue
+
+        values = (
+            normalized[column]
+            .fillna("desconocido")
+            .astype(str)
+            .str.strip()
+            .str.upper()
+        )
+        unique_categories[column] = sorted(values[values != ""].unique().tolist())
+
+    feature_importances = {}
+    if hasattr(model, "feature_importances_"):
+        importances = np.asarray(model.feature_importances_, dtype=float)
+        for idx, feature in enumerate(feature_cols):
+            feature_importances[feature] = float(importances[idx])
+
+    metadata = {
+        "categorical_values": unique_categories,
+        "feature_importances": feature_importances,
+        "metrics": getattr(model, "training_metrics", {}),
+    }
+
+    os.makedirs("models", exist_ok=True)
+    metadata_path = os.path.join("models", "model_metadata.json")
+    with open(metadata_path, "w", encoding="utf-8") as f:
+        json.dump(metadata, f, ensure_ascii=False, indent=2)
+
+    print(f"Metadata exported to {metadata_path}")
+    return metadata_path
 
 
 class VehicleValuationModel:
@@ -397,6 +522,7 @@ if __name__ == "__main__":
     dataset_path = os.path.join("data", "data.csv")
     cleaned_df = load_and_clean_data(dataset_path)
     X_data, y_data = prepare_features(cleaned_df)
-    _, training_metrics = train_model(X_data, y_data)
+    trained_model, training_metrics = train_model(X_data, y_data)
+    export_metadata(cleaned_df, trained_model, X_data.columns.tolist())
     print("Training metrics:")
     print(training_metrics)
