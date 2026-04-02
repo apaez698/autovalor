@@ -1,19 +1,23 @@
-"""
-Flask API for vehicle valuation predictions.
-"""
-from flask import Flask, request, jsonify
-import sys
-import os
+"""Flask REST API for vehicle valuation predictions."""
+
+import json
+from datetime import datetime
+from pathlib import Path
+
 import joblib
-
-# Add src to path for imports
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
-
-from src.train_model import VehicleValuationModel
+import numpy as np
+from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 
 app = Flask(__name__)
-MODEL_MTIME = None
+CORS(app)
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+MODELS_DIR = BASE_DIR / "models"
+MODEL_PATH = MODELS_DIR / "vehicle_model.pkl"
+SCALER_PATH = MODELS_DIR / "vehicle_model_scaler.pkl"
+METADATA_PATH = MODELS_DIR / "model_metadata.json"
 
 CATEGORICAL_COLUMNS = [
     "marca",
@@ -26,160 +30,306 @@ CATEGORICAL_COLUMNS = [
     "estado_carroceria",
 ]
 
+DEFAULT_FEATURE_ORDER = [
+    "anio",
+    "antiguedad",
+    "marca",
+    "tipo",
+    "transmision",
+    "combustible",
+    "provincia",
+    "color",
+    "estado_motor",
+    "estado_carroceria",
+]
 
-def load_label_encoders(models_dir: str = "models"):
-    """Load label encoders saved during training from the models directory."""
+model = None
+scaler = None
+label_encoders = {}
+model_metadata = {}
+
+
+def error_response(message: str, status_code: int, details=None):
+    """Return a consistent JSON error body."""
+    payload = {"error": {"message": message}}
+    if details is not None:
+        payload["error"]["details"] = details
+    return jsonify(payload), status_code
+
+
+def load_label_encoders():
+    """Load all available label encoders from disk."""
     encoders = {}
     for column in CATEGORICAL_COLUMNS:
-        encoder_path = os.path.join(models_dir, f"{column}_label_encoder.joblib")
-        if os.path.exists(encoder_path):
+        encoder_path = MODELS_DIR / f"{column}_label_encoder.joblib"
+        if encoder_path.exists():
             encoders[column] = joblib.load(encoder_path)
     return encoders
 
 
-label_encoders = load_label_encoders()
+def load_metadata():
+    """Load model metadata JSON if present."""
+    if not METADATA_PATH.exists():
+        return {}
+
+    with METADATA_PATH.open("r", encoding="utf-8") as f:
+        return json.load(f)
 
 
-def get_label_encoder(column: str):
-    """Get encoder for a column, reloading from disk if needed."""
-    if column in label_encoders:
-        return label_encoders[column]
-
-    refreshed = load_label_encoders()
-    label_encoders.update(refreshed)
-    return label_encoders.get(column)
-
-# Load model on startup
-model = VehicleValuationModel()
-try:
-    model.load_model()
-    if os.path.exists(model.model_path):
-        MODEL_MTIME = os.path.getmtime(model.model_path)
-    print("Model loaded successfully")
-except FileNotFoundError:
-    print("Warning: Pre-trained model not found. Please train a model first.")
+def metadata_from_encoders():
+    """Build categorical valid options from encoder classes."""
+    options = {}
+    for column, encoder in label_encoders.items():
+        classes = getattr(encoder, "classes_", [])
+        options[column] = [str(value) for value in classes]
+    return options
 
 
-def refresh_model_if_updated():
-    """Reload model/scaler if the persisted model file was updated."""
-    global MODEL_MTIME
-    if not os.path.exists(model.model_path):
-        return
+def load_resources_on_startup():
+    """Load model, scaler, encoders, and metadata into memory."""
+    global model, scaler, label_encoders, model_metadata
 
-    current_mtime = os.path.getmtime(model.model_path)
-    if MODEL_MTIME is None or current_mtime > MODEL_MTIME or model.model is None:
-        model.load_model()
-        MODEL_MTIME = current_mtime
+    if MODEL_PATH.exists():
+        with MODEL_PATH.open("rb") as f:
+            model = joblib.load(f)
+
+    if SCALER_PATH.exists():
+        with SCALER_PATH.open("rb") as f:
+            scaler = joblib.load(f)
+
+    label_encoders = load_label_encoders()
+    model_metadata = load_metadata()
+
+
+def build_health_payload():
+    """Build model readiness and inventory details for health endpoint."""
+    return {
+        "status": "ok",
+        "service": "vehicle-valuation-api",
+        "model": {
+            "loaded": model is not None,
+            "path": str(MODEL_PATH.relative_to(BASE_DIR)),
+            "exists_on_disk": MODEL_PATH.exists(),
+            "scaler_loaded": scaler is not None,
+            "metadata_loaded": bool(model_metadata),
+            "encoders_loaded": sorted(label_encoders.keys()),
+        },
+    }
+
+
+def validate_predict_payload(payload):
+    """Validate base predict request structure."""
+    if not isinstance(payload, dict):
+        return "Invalid payload: JSON object expected"
+
+    has_features = "features" in payload
+    has_vehicle = "vehicle" in payload
+
+    if has_features == has_vehicle:
+        return "Provide exactly one of 'features' or 'vehicle'"
+
+    return None
+
+
+def encode_vehicle_payload(vehicle: dict, feature_order: list[str]):
+    """Validate and encode structured vehicle payload into numeric features."""
+    if not isinstance(vehicle, dict):
+        raise ValueError("'vehicle' must be a JSON object")
+
+    missing_fields = ["anio", *CATEGORICAL_COLUMNS]
+    missing = [field for field in missing_fields if field not in vehicle]
+    if missing:
+        raise KeyError(f"Missing required vehicle fields: {', '.join(missing)}")
+
+    current_year = datetime.now().year
+    transformed = {
+        "anio": float(vehicle["anio"]),
+        "antiguedad": float(current_year - float(vehicle["anio"])),
+    }
+
+    invalid_categories = {}
+    valid_options = model_metadata.get("categorical_values", {})
+    fallback_options = metadata_from_encoders()
+
+    for column in CATEGORICAL_COLUMNS:
+        encoder = label_encoders.get(column)
+        if encoder is None:
+            raise RuntimeError(f"Missing encoder for '{column}'")
+
+        value = str(vehicle[column]).strip().upper()
+        allowed = valid_options.get(column) or fallback_options.get(column, [])
+        allowed_upper = {str(item).upper() for item in allowed}
+        if allowed_upper and value not in allowed_upper:
+            invalid_categories[column] = {
+                "received": value,
+                "valid_options": sorted(allowed_upper),
+            }
+            continue
+
+        if value not in set(getattr(encoder, "classes_", [])):
+            invalid_categories[column] = {
+                "received": value,
+                "valid_options": [str(v) for v in encoder.classes_],
+            }
+            continue
+
+        transformed[column] = int(encoder.transform([value])[0])
+
+    if invalid_categories:
+        raise ValueError("Invalid categorical values", invalid_categories)
+
+    missing_features = [feature for feature in feature_order if feature not in transformed]
+    if missing_features:
+        raise KeyError(
+            "Missing computed features required by feature_order: "
+            + ", ".join(missing_features)
+        )
+
+    return [float(transformed[feature]) for feature in feature_order]
+
+
+def predict_price(features: list[float]):
+    """Run model inference with optional scaler transform."""
+    if model is None:
+        raise RuntimeError("Model is not loaded")
+
+    active_model = model
+    active_scaler = scaler
+    # Backward compatibility: support wrapper objects exposing .model/.scaler.
+    if hasattr(model, "model") and getattr(model, "model") is not None:
+        active_model = getattr(model, "model")
+    if hasattr(model, "scaler") and getattr(model, "scaler") is not None:
+        active_scaler = getattr(model, "scaler")
+
+    features_np = np.asarray([features], dtype=float)
+    if active_scaler is not None:
+        features_np = active_scaler.transform(features_np)
+
+    prediction = float(active_model.predict(features_np)[0])
+    return prediction
 
 
 @app.route("/health", methods=["GET"])
 def health_check():
-    """Health check endpoint."""
-    return jsonify({"status": "ok", "service": "vehicle-valuation-api"}), 200
+    """Return API and model readiness details."""
+    return jsonify(build_health_payload()), 200
+
+
+@app.route("/metadata", methods=["GET"])
+def metadata():
+    """Return valid options per categorical field."""
+    categorical_values = model_metadata.get("categorical_values", {})
+    if not categorical_values:
+        categorical_values = metadata_from_encoders()
+
+    if not categorical_values:
+        return error_response(
+            "Metadata unavailable. No model_metadata.json or encoder classes found.",
+            404,
+        )
+
+    return jsonify({
+        "feature_order": DEFAULT_FEATURE_ORDER,
+        "categorical_values": categorical_values,
+    }), 200
+
+
+@app.route("/feature-importance", methods=["GET"])
+def feature_importance():
+    """Return feature importance values from metadata or loaded model."""
+    importance = model_metadata.get("feature_importances", {})
+
+    if not importance and model is not None and hasattr(model, "feature_importances_"):
+        raw = list(getattr(model, "feature_importances_"))
+        importance = {
+            feature: float(raw[idx])
+            for idx, feature in enumerate(DEFAULT_FEATURE_ORDER)
+            if idx < len(raw)
+        }
+
+    if not importance:
+        return error_response("Feature importance is not available", 404)
+
+    sorted_importance = [
+        {"feature": feature, "importance": value}
+        for feature, value in sorted(
+            importance.items(), key=lambda item: item[1], reverse=True
+        )
+    ]
+    return jsonify({"feature_importance": sorted_importance}), 200
 
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    """
-    Predict vehicle valuation.
-    
-    Expected JSON:
-    {
-        "features": [feature1, feature2, ...]
-    }
+    """Validate request, encode categoricals, and predict vehicle value."""
+    if not request.is_json:
+        return error_response("Content-Type must be application/json", 415)
 
-    Or structured input using saved encoders:
-    {
-        "vehicle": {
-            "anio": 2024,
-            "marca": "TOYOTA",
-            "tipo": "SUV",
-            "transmision": "AUTOMATICA",
-            "combustible": "GASOLINA",
-            "provincia": "PICHINCHA",
-            "color": "NEGRO",
-            "estado_motor": "BUENO",
-            "estado_carroceria": "BUENO"
-        },
-        "feature_order": ["anio", "antiguedad", "marca", ...]
-    }
-    """
+    payload = request.get_json(silent=True)
+    if payload is None:
+        return error_response("Malformed JSON body", 400)
+
+    structure_error = validate_predict_payload(payload)
+    if structure_error:
+        return error_response(structure_error, 400)
+
     try:
-        refresh_model_if_updated()
-        data = request.get_json()
-
-        if not data:
-            return jsonify({"error": "Missing JSON body"}), 400
-
-        if "features" in data:
-            features = data["features"]
-        elif "vehicle" in data:
-            vehicle = data["vehicle"]
-            if not isinstance(vehicle, dict):
-                return jsonify({"error": "'vehicle' must be an object"}), 400
-
-            if "anio" not in vehicle:
-                return jsonify({"error": "Missing 'anio' in vehicle payload"}), 400
-
-            feature_order = data.get("feature_order")
-            if not feature_order:
-                return jsonify({
-                    "error": "Missing 'feature_order' for structured vehicle payload"
-                }), 400
-
-            transformed = dict(vehicle)
-            transformed["antiguedad"] = 2026 - float(vehicle["anio"])
-
-            for column in CATEGORICAL_COLUMNS:
-                if column not in transformed:
-                    return jsonify({"error": f"Missing '{column}' in vehicle payload"}), 400
-                encoder = get_label_encoder(column)
-                if not encoder:
-                    return jsonify({
-                        "error": f"Encoder not found for '{column}'. Train and save encoders first."
-                    }), 500
-
-                value = str(transformed[column]).strip().upper()
-                if value not in encoder.classes_:
-                    return jsonify({
-                        "error": f"Unknown category '{value}' for '{column}'"
-                    }), 400
-                transformed[column] = int(encoder.transform([value])[0])
-
-            try:
-                features = [float(transformed[col]) for col in feature_order]
-            except KeyError as exc:
-                return jsonify({"error": f"Missing feature in payload: {exc}"}), 400
+        if "features" in payload:
+            features = payload["features"]
+            if not isinstance(features, list) or not features:
+                return error_response("'features' must be a non-empty list", 400)
+            numeric_features = [float(value) for value in features]
         else:
-            return jsonify({
-                "error": "Missing input. Provide either 'features' or 'vehicle'"
-            }), 400
-        
-        if not model.model:
-            return jsonify({"error": "Model not loaded"}), 500
-        
-        # Scale features and make prediction
-        X_scaled = model.scaler.transform([features])
-        prediction = model.model.predict(X_scaled)[0]
-        
-        return jsonify({"predicted_value": float(prediction)}), 200
-    
-    except Exception as e:
-        return jsonify({"error": str(e)}), 400
+            feature_order = payload.get("feature_order", DEFAULT_FEATURE_ORDER)
+            if not isinstance(feature_order, list) or not feature_order:
+                return error_response("'feature_order' must be a non-empty list", 400)
+            numeric_features = encode_vehicle_payload(payload["vehicle"], feature_order)
+
+        estimated_price = predict_price(numeric_features)
+        min_price = estimated_price * 0.85
+        max_price = estimated_price * 1.15
+
+        return jsonify(
+            {
+                "predicted_value": round(estimated_price, 2),
+                "estimated_price": round(estimated_price, 2),
+                "price_range": {
+                    "min": round(min_price, 2),
+                    "max": round(max_price, 2),
+                    "tolerance_percent": 15,
+                },
+            }
+        ), 200
+    except ValueError as exc:
+        if len(exc.args) == 2 and isinstance(exc.args[1], dict):
+            return error_response(exc.args[0], 400, exc.args[1])
+        return error_response(str(exc), 400)
+    except KeyError as exc:
+        return error_response(str(exc), 400)
+    except RuntimeError as exc:
+        return error_response(str(exc), 503)
+    except Exception as exc:
+        return error_response("Prediction failed", 500, str(exc))
 
 
 @app.route("/info", methods=["GET"])
 def info():
-    """Get API information."""
-    return jsonify({
-        "name": "Vehicle Valuation API",
-        "version": "1.0.0",
-        "endpoints": [
-            "/health - Health check",
-            "/predict - Make valuation prediction",
-            "/info - API information"
-        ]
-    }), 200
+    """Backward-compatible API info endpoint."""
+    return jsonify(
+        {
+            "name": "Vehicle Valuation API",
+            "version": "2.0.0",
+            "endpoints": [
+                "/health",
+                "/metadata",
+                "/predict",
+                "/feature-importance",
+            ],
+        }
+    ), 200
+
+
+load_resources_on_startup()
 
 
 if __name__ == "__main__":

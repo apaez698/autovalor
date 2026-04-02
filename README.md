@@ -70,17 +70,73 @@ The API will start on `http://localhost:5000`
 
 ### API Endpoints
 
-- **GET `/health`** - Health check
-- **GET `/info`** - API information
-- **POST `/predict`** - Make a valuation prediction
+- **GET `/health`** - Health and model readiness details
+- **GET `/metadata`** - Valid options per categorical field
+- **POST `/predict`** - Predict estimated price and min/max range (±15%)
+- **GET `/feature-importance`** - Feature importance ranking
+- **GET `/info`** - API information (compatibility endpoint)
 
 #### Example Prediction Request
 
 ```bash
 curl -X POST http://localhost:5000/predict \
   -H "Content-Type: application/json" \
-  -d '{"features": [2020, 50000, 4, 2.0, 150]}'
+  -d '{
+    "vehicle": {
+      "anio": 2024,
+      "marca": "TOYOTA",
+      "tipo": "NUEVOS",
+      "transmision": "AUTOMATICA",
+      "combustible": "GASOLINA",
+      "provincia": "GRANADOS",
+      "color": "NEGRO",
+      "estado_motor": "BUENO",
+      "estado_carroceria": "DESCONOCIDO"
+    },
+    "feature_order": [
+      "anio",
+      "antiguedad",
+      "marca",
+      "tipo",
+      "transmision",
+      "combustible",
+      "provincia",
+      "color",
+      "estado_motor",
+      "estado_carroceria"
+    ]
+  }'
 ```
+
+#### Example Prediction Response
+
+```json
+{
+  "predicted_value": 41250.33,
+  "estimated_price": 41250.33,
+  "price_range": {
+    "min": 35062.78,
+    "max": 47437.88,
+    "tolerance_percent": 15
+  }
+}
+```
+
+#### Metadata Endpoint
+
+```bash
+curl http://localhost:5000/metadata
+```
+
+Returns categorical valid options used for input validation (from `models/model_metadata.json` when available, otherwise from saved encoders).
+
+#### Feature Importance Endpoint
+
+```bash
+curl http://localhost:5000/feature-importance
+```
+
+Returns model feature importances sorted from highest to lowest.
 
 ## Testing
 
