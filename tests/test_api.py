@@ -57,3 +57,61 @@ class TestFlaskAPI:
         assert response.status_code == 200
         data = json.loads(response.data)
         assert "predicted_value" in data
+
+    @patch('api.app.model')
+    def test_predict_with_vehicle_payload(self, mock_model, client):
+        """Test structured vehicle payload using saved label encoders."""
+        mock_model.model = MagicMock()
+        mock_model.model.predict = MagicMock(return_value=[42000])
+        mock_model.scaler = MagicMock()
+        mock_model.scaler.transform = MagicMock(return_value=[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]])
+
+        # Mock encoders with known classes and transform outputs
+        columns = [
+            "marca",
+            "tipo",
+            "transmision",
+            "combustible",
+            "provincia",
+            "color",
+            "estado_motor",
+            "estado_carroceria",
+        ]
+        encoders = {}
+        for idx, col in enumerate(columns):
+            encoder = MagicMock()
+            encoder.classes_ = ["VALOR"]
+            encoder.transform = MagicMock(return_value=[idx + 1])
+            encoders[col] = encoder
+
+        payload = {
+            "vehicle": {
+                "anio": 2024,
+                "marca": "VALOR",
+                "tipo": "VALOR",
+                "transmision": "VALOR",
+                "combustible": "VALOR",
+                "provincia": "VALOR",
+                "color": "VALOR",
+                "estado_motor": "VALOR",
+                "estado_carroceria": "VALOR"
+            },
+            "feature_order": [
+                "anio",
+                "antiguedad",
+                "marca",
+                "tipo",
+                "transmision",
+                "combustible",
+                "provincia",
+                "color",
+                "estado_motor",
+                "estado_carroceria",
+            ]
+        }
+
+        with patch('api.app.label_encoders', encoders):
+            response = client.post("/predict", json=payload)
+            assert response.status_code == 200
+            data = json.loads(response.data)
+            assert "predicted_value" in data

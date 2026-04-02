@@ -3,9 +3,12 @@ Model training module for vehicle valuation ML.
 """
 import os
 import pickle
+import re
 import pandas as pd
+import joblib
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 
 
@@ -130,6 +133,118 @@ def load_and_clean_data(filepath: str) -> pd.DataFrame:
     )
 
     return df
+
+
+def prepare_features(df: pd.DataFrame):
+    """Prepare model features and target from a vehicle DataFrame.
+
+    This function:
+    1. Calculates ``antiguedad = 2026 - anio``.
+    2. Encodes categorical columns using ``LabelEncoder``.
+    3. Saves each fitted encoder to ``models/`` with ``joblib``.
+    4. Returns feature matrix ``X`` and target vector ``y``.
+
+    Expected target column:
+    - ``precio en el que se compro``
+    """
+    categorical_columns = [
+        "marca",
+        "tipo",
+        "transmision",
+        "combustible",
+        "provincia",
+        "color",
+        "estado_motor",
+        "estado_carroceria",
+    ]
+    target_candidates = ["precio en el que se compro", "Precio Final Editado"]
+
+    data = df.copy()
+
+    # Normalize source columns from either the API schema or the project CSV schema.
+    source_map = {
+        "anio": ["anio", "Año"],
+        "marca": ["marca", "Marca"],
+        "color": ["color", "Color"],
+        "provincia": ["provincia", "Agencia"],
+        "tipo": ["tipo", "Línea Negocio"],
+        "target": target_candidates,
+    }
+
+    normalized = pd.DataFrame(index=data.index)
+    for target_col, candidates in source_map.items():
+        for candidate in candidates:
+            if candidate in data.columns:
+                normalized[target_col] = data[candidate]
+                break
+
+    # Build missing fields expected by the API from available free-text columns.
+    desc = data.get("Descripción", pd.Series("", index=data.index)).fillna("").astype(str)
+    comments = data.get("Comentario", pd.Series("", index=data.index)).fillna("").astype(str)
+    obs = data.get("Observación Precio", pd.Series("", index=data.index)).fillna("").astype(str)
+    combined_notes = (comments + " " + obs).str.upper()
+
+    if "transmision" not in normalized.columns:
+        normalized["transmision"] = "DESCONOCIDO"
+        normalized.loc[desc.str.contains(r"\bT/A\b|\bCVT\b", case=False, regex=True), "transmision"] = "AUTOMATICA"
+        normalized.loc[desc.str.contains(r"\bT/M\b", case=False, regex=True), "transmision"] = "MANUAL"
+
+    if "combustible" not in normalized.columns:
+        normalized["combustible"] = "DESCONOCIDO"
+        normalized.loc[desc.str.contains(r"HYBRID|HSD|HIBRID", case=False, regex=True), "combustible"] = "HIBRIDO"
+        normalized.loc[desc.str.contains(r"CRDI|DIESEL", case=False, regex=True), "combustible"] = "DIESEL"
+        normalized.loc[desc.str.contains(r"TURBO|VVTI|DUALJET|BOOSTERJET|EFI", case=False, regex=True), "combustible"] = "GASOLINA"
+
+    if "estado_motor" not in normalized.columns:
+        normalized["estado_motor"] = "DESCONOCIDO"
+        normalized.loc[combined_notes.str.contains(r"FALLA|MECAN", regex=True), "estado_motor"] = "REGULAR"
+        normalized.loc[combined_notes.str.contains(r"MANTENIMIENTO|MANTENIMIENTOS EN CASA", regex=True), "estado_motor"] = "BUENO"
+
+    if "estado_carroceria" not in normalized.columns:
+        normalized["estado_carroceria"] = "DESCONOCIDO"
+        normalized.loc[combined_notes.str.contains(r"PINTAR|DETALLES", regex=True), "estado_carroceria"] = "REGULAR"
+
+    if "target" not in normalized.columns:
+        raise ValueError(
+            "Missing target column. Expected one of: "
+            + ", ".join(target_candidates)
+        )
+
+    required_columns = ["anio", *categorical_columns]
+    missing_columns = [col for col in required_columns if col not in normalized.columns]
+    if missing_columns:
+        missing = ", ".join(missing_columns)
+        raise ValueError(f"Missing required columns for feature preparation: {missing}")
+
+    normalized["anio"] = pd.to_numeric(normalized["anio"], errors="coerce")
+    normalized["target"] = pd.to_numeric(normalized["target"], errors="coerce")
+
+    # Keep rows where core numeric inputs exist.
+    normalized = normalized.dropna(subset=["anio", "target"]).copy()
+
+    normalized["anio"] = normalized["anio"].astype(int)
+    normalized["target"] = normalized["target"].astype(float)
+
+    data = normalized
+    data["antiguedad"] = 2026 - data["anio"]
+
+    os.makedirs("models", exist_ok=True)
+    for column in categorical_columns:
+        encoder = LabelEncoder()
+        data[column] = (
+            data[column]
+            .fillna("desconocido")
+            .astype(str)
+            .str.strip()
+            .str.upper()
+        )
+        data[column] = encoder.fit_transform(data[column])
+        encoder_path = os.path.join("models", f"{column}_label_encoder.joblib")
+        joblib.dump(encoder, encoder_path)
+
+    y = data["target"]
+    X = data.drop(columns=["target"])
+    return X, y
 
 
 class VehicleValuationModel:
