@@ -62,5 +62,3 @@ Thumbs.db
 *.log
 logs/
 
-# Render deployment
-render.yaml

@@ -8,6 +8,21 @@ import joblib
 import numpy as np
 from flask import Flask, jsonify, request
 from flask_cors import CORS
+from marshmallow import ValidationError
+
+try:
+    from src.feature_config import CATEGORICAL_COLUMNS, FEATURE_ORDER
+except ModuleNotFoundError:
+    import sys
+
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+    from src.feature_config import CATEGORICAL_COLUMNS, FEATURE_ORDER
+
+try:
+    from api.schemas import VehicleInputSchema
+except ModuleNotFoundError:
+    # Support running as a script: `python api/app.py`
+    from schemas import VehicleInputSchema
 
 
 app = Flask(__name__)
@@ -19,29 +34,7 @@ MODEL_PATH = MODELS_DIR / "vehicle_model.pkl"
 SCALER_PATH = MODELS_DIR / "vehicle_model_scaler.pkl"
 METADATA_PATH = MODELS_DIR / "model_metadata.json"
 
-CATEGORICAL_COLUMNS = [
-    "marca",
-    "tipo",
-    "transmision",
-    "combustible",
-    "provincia",
-    "color",
-    "estado_motor",
-    "estado_carroceria",
-]
-
-DEFAULT_FEATURE_ORDER = [
-    "anio",
-    "antiguedad",
-    "marca",
-    "tipo",
-    "transmision",
-    "combustible",
-    "provincia",
-    "color",
-    "estado_motor",
-    "estado_carroceria",
-]
+DEFAULT_FEATURE_ORDER = FEATURE_ORDER
 
 model = None
 scaler = None
@@ -100,6 +93,14 @@ def load_resources_on_startup():
     label_encoders = load_label_encoders()
     model_metadata = load_metadata()
 
+    # Guard against stale scaler artifacts trained with a different feature count.
+    if scaler is not None:
+        feature_order = model_metadata.get("feature_order", DEFAULT_FEATURE_ORDER)
+        expected_features = len(feature_order)
+        scaler_features = getattr(scaler, "n_features_in_", expected_features)
+        if scaler_features != expected_features:
+            scaler = None
+
 
 def build_health_payload():
     """Build model readiness and inventory details for health endpoint."""
@@ -136,7 +137,7 @@ def encode_vehicle_payload(vehicle: dict, feature_order: list[str]):
     if not isinstance(vehicle, dict):
         raise ValueError("'vehicle' must be a JSON object")
 
-    missing_fields = ["anio", *CATEGORICAL_COLUMNS]
+    missing_fields = ["anio", "kilometraje", "cilindrada", *CATEGORICAL_COLUMNS]
     missing = [field for field in missing_fields if field not in vehicle]
     if missing:
         raise KeyError(f"Missing required vehicle fields: {', '.join(missing)}")
@@ -145,6 +146,8 @@ def encode_vehicle_payload(vehicle: dict, feature_order: list[str]):
     transformed = {
         "anio": float(vehicle["anio"]),
         "antiguedad": float(current_year - float(vehicle["anio"])),
+        "kilometraje": float(vehicle["kilometraje"]),
+        "cilindrada": float(vehicle["cilindrada"]),
     }
 
     invalid_categories = {}
@@ -228,9 +231,13 @@ def metadata():
             404,
         )
 
+    feature_order = model_metadata.get("feature_order", DEFAULT_FEATURE_ORDER)
+
     return jsonify({
-        "feature_order": DEFAULT_FEATURE_ORDER,
+        "feature_order": feature_order,
         "categorical_values": categorical_values,
+        "feature_importances": model_metadata.get("feature_importances", {}),
+        "metrics": model_metadata.get("metrics", {}),
     }), 200
 
 
@@ -240,10 +247,11 @@ def feature_importance():
     importance = model_metadata.get("feature_importances", {})
 
     if not importance and model is not None and hasattr(model, "feature_importances_"):
+        feature_order = model_metadata.get("feature_order", DEFAULT_FEATURE_ORDER)
         raw = list(getattr(model, "feature_importances_"))
         importance = {
             feature: float(raw[idx])
-            for idx, feature in enumerate(DEFAULT_FEATURE_ORDER)
+            for idx, feature in enumerate(feature_order)
             if idx < len(raw)
         }
 
@@ -280,9 +288,31 @@ def predict():
                 return error_response("'features' must be a non-empty list", 400)
             numeric_features = [float(value) for value in features]
         else:
-            feature_order = payload.get("feature_order", DEFAULT_FEATURE_ORDER)
-            if not isinstance(feature_order, list) or not feature_order:
-                return error_response("'feature_order' must be a non-empty list", 400)
+            feature_order = model_metadata.get("feature_order", DEFAULT_FEATURE_ORDER)
+            requested_order = payload.get("feature_order")
+            if requested_order is not None and requested_order != feature_order:
+                return jsonify(
+                    {
+                        "error": {
+                            "message": "Validation failed",
+                            "details": {
+                                "feature_order": [
+                                    "feature_order must match the model metadata contract"
+                                ]
+                            },
+                        }
+                    }
+                ), 422
+
+            valid_options = model_metadata.get("categorical_values") or metadata_from_encoders()
+            schema = VehicleInputSchema(valid_options=valid_options)
+            try:
+                schema.load(payload["vehicle"])
+            except ValidationError as exc:
+                return jsonify(
+                    {"error": {"message": "Validation failed", "details": exc.messages}}
+                ), 422
+
             numeric_features = encode_vehicle_payload(payload["vehicle"], feature_order)
 
         estimated_price = predict_price(numeric_features)
@@ -302,10 +332,19 @@ def predict():
         ), 200
     except ValueError as exc:
         if len(exc.args) == 2 and isinstance(exc.args[1], dict):
-            return error_response(exc.args[0], 400, exc.args[1])
+            return jsonify(
+                {"error": {"message": "Validation failed", "details": exc.args[1]}}
+            ), 422
         return error_response(str(exc), 400)
     except KeyError as exc:
-        return error_response(str(exc), 400)
+        return jsonify(
+            {
+                "error": {
+                    "message": "Validation failed",
+                    "details": {"payload": [str(exc)]},
+                }
+            }
+        ), 422
     except RuntimeError as exc:
         return error_response(str(exc), 503)
     except Exception as exc:

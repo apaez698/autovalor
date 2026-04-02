@@ -14,6 +14,19 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_absolute_error, r2_score, make_scorer
 
+try:
+    from src.feature_config import (
+        CATEGORICAL_COLUMNS,
+        FEATURE_ORDER,
+        VALIDATION_LIMITS,
+    )
+except ModuleNotFoundError:
+    from feature_config import (  # type: ignore
+        CATEGORICAL_COLUMNS,
+        FEATURE_ORDER,
+        VALIDATION_LIMITS,
+    )
+
 
 def robust_mape(y_true, y_pred, min_target: float = 1000.0) -> float:
     """Compute MAPE (%) excluding very small target values.
@@ -37,6 +50,76 @@ def robust_mape(y_true, y_pred, min_target: float = 1000.0) -> float:
         )
         * 100
     )
+
+
+def _extract_cilindrada_from_description(description_series: pd.Series) -> pd.Series:
+    """Extract engine displacement in liters from free-text descriptions."""
+    return pd.to_numeric(
+        description_series.fillna("").astype(str).str.extract(r"(\d+(?:\.\d+)?)\s*L\b", expand=False),
+        errors="coerce",
+    )
+
+
+def build_normalized_dataframe(df: pd.DataFrame, include_target: bool = True) -> pd.DataFrame:
+    """Build normalized dataframe used by both training and metadata export."""
+    data = df.copy()
+
+    source_map = {
+        "anio": ["anio", "Año"],
+        "marca": ["marca", "Marca"],
+        "modelo": ["modelo", "Modelo"],
+        "color": ["color", "Color"],
+        "provincia": ["provincia", "Agencia"],
+        "tipo": ["tipo", "Línea Negocio"],
+        "kilometraje": ["kilometraje", "Recorrido"],
+        "cilindrada": ["cilindrada"],
+    }
+    if include_target:
+        source_map["target"] = ["precio en el que se compro", "Precio Final Editado"]
+
+    normalized = pd.DataFrame(index=data.index)
+    for target_col, candidates in source_map.items():
+        for candidate in candidates:
+            if candidate in data.columns:
+                normalized[target_col] = data[candidate]
+                break
+
+    desc = data.get("Descripción", pd.Series("", index=data.index)).fillna("").astype(str)
+    comments = data.get("Comentario", pd.Series("", index=data.index)).fillna("").astype(str)
+    obs = data.get("Observación Precio", pd.Series("", index=data.index)).fillna("").astype(str)
+    combined_notes = (comments + " " + obs).str.upper()
+
+    if "transmision" not in normalized.columns:
+        normalized["transmision"] = "DESCONOCIDO"
+        normalized.loc[desc.str.contains(r"\bT/A\b|\bCVT\b", case=False, regex=True), "transmision"] = "AUTOMATICA"
+        normalized.loc[desc.str.contains(r"\bT/M\b", case=False, regex=True), "transmision"] = "MANUAL"
+
+    if "combustible" not in normalized.columns:
+        normalized["combustible"] = "DESCONOCIDO"
+        normalized.loc[desc.str.contains(r"HYBRID|HSD|HIBRID", case=False, regex=True), "combustible"] = "HIBRIDO"
+        normalized.loc[desc.str.contains(r"CRDI|DIESEL", case=False, regex=True), "combustible"] = "DIESEL"
+        normalized.loc[desc.str.contains(r"TURBO|VVTI|DUALJET|BOOSTERJET|EFI", case=False, regex=True), "combustible"] = "GASOLINA"
+
+    if "estado_motor" not in normalized.columns:
+        normalized["estado_motor"] = "DESCONOCIDO"
+        normalized.loc[combined_notes.str.contains(r"FALLA|MECAN", regex=True), "estado_motor"] = "REGULAR"
+        normalized.loc[combined_notes.str.contains(r"MANTENIMIENTO|MANTENIMIENTOS EN CASA", regex=True), "estado_motor"] = "BUENO"
+
+    if "estado_carroceria" not in normalized.columns:
+        normalized["estado_carroceria"] = "DESCONOCIDO"
+        normalized.loc[combined_notes.str.contains(r"PINTAR|DETALLES", regex=True), "estado_carroceria"] = "REGULAR"
+
+    normalized["anio"] = pd.to_numeric(normalized.get("anio"), errors="coerce")
+    normalized["kilometraje"] = pd.to_numeric(normalized.get("kilometraje"), errors="coerce")
+
+    parsed_cilindrada = _extract_cilindrada_from_description(desc)
+    normalized["cilindrada"] = pd.to_numeric(normalized.get("cilindrada"), errors="coerce")
+    normalized["cilindrada"] = normalized["cilindrada"].fillna(parsed_cilindrada)
+
+    if include_target:
+        normalized["target"] = pd.to_numeric(normalized.get("target"), errors="coerce")
+
+    return normalized
 
 
 def load_and_clean_data(filepath: str) -> pd.DataFrame:
@@ -174,89 +257,39 @@ def prepare_features(df: pd.DataFrame):
     Expected target column:
     - ``precio en el que se compro``
     """
-    categorical_columns = [
-        "marca",
-        "tipo",
-        "transmision",
-        "combustible",
-        "provincia",
-        "color",
-        "estado_motor",
-        "estado_carroceria",
-    ]
-    target_candidates = ["precio en el que se compro", "Precio Final Editado"]
-
-    data = df.copy()
-
-    # Normalize source columns from either the API schema or the project CSV schema.
-    source_map = {
-        "anio": ["anio", "Año"],
-        "marca": ["marca", "Marca"],
-        "color": ["color", "Color"],
-        "provincia": ["provincia", "Agencia"],
-        "tipo": ["tipo", "Línea Negocio"],
-        "target": target_candidates,
-    }
-
-    normalized = pd.DataFrame(index=data.index)
-    for target_col, candidates in source_map.items():
-        for candidate in candidates:
-            if candidate in data.columns:
-                normalized[target_col] = data[candidate]
-                break
-
-    # Build missing fields expected by the API from available free-text columns.
-    desc = data.get("Descripción", pd.Series("", index=data.index)).fillna("").astype(str)
-    comments = data.get("Comentario", pd.Series("", index=data.index)).fillna("").astype(str)
-    obs = data.get("Observación Precio", pd.Series("", index=data.index)).fillna("").astype(str)
-    combined_notes = (comments + " " + obs).str.upper()
-
-    if "transmision" not in normalized.columns:
-        normalized["transmision"] = "DESCONOCIDO"
-        normalized.loc[desc.str.contains(r"\bT/A\b|\bCVT\b", case=False, regex=True), "transmision"] = "AUTOMATICA"
-        normalized.loc[desc.str.contains(r"\bT/M\b", case=False, regex=True), "transmision"] = "MANUAL"
-
-    if "combustible" not in normalized.columns:
-        normalized["combustible"] = "DESCONOCIDO"
-        normalized.loc[desc.str.contains(r"HYBRID|HSD|HIBRID", case=False, regex=True), "combustible"] = "HIBRIDO"
-        normalized.loc[desc.str.contains(r"CRDI|DIESEL", case=False, regex=True), "combustible"] = "DIESEL"
-        normalized.loc[desc.str.contains(r"TURBO|VVTI|DUALJET|BOOSTERJET|EFI", case=False, regex=True), "combustible"] = "GASOLINA"
-
-    if "estado_motor" not in normalized.columns:
-        normalized["estado_motor"] = "DESCONOCIDO"
-        normalized.loc[combined_notes.str.contains(r"FALLA|MECAN", regex=True), "estado_motor"] = "REGULAR"
-        normalized.loc[combined_notes.str.contains(r"MANTENIMIENTO|MANTENIMIENTOS EN CASA", regex=True), "estado_motor"] = "BUENO"
-
-    if "estado_carroceria" not in normalized.columns:
-        normalized["estado_carroceria"] = "DESCONOCIDO"
-        normalized.loc[combined_notes.str.contains(r"PINTAR|DETALLES", regex=True), "estado_carroceria"] = "REGULAR"
+    normalized = build_normalized_dataframe(df, include_target=True)
 
     if "target" not in normalized.columns:
-        raise ValueError(
-            "Missing target column. Expected one of: "
-            + ", ".join(target_candidates)
-        )
+        raise ValueError("Missing target column. Expected one of: precio en el que se compro, Precio Final Editado")
 
-    required_columns = ["anio", *categorical_columns]
+    required_columns = ["anio", "kilometraje", "cilindrada", *CATEGORICAL_COLUMNS]
     missing_columns = [col for col in required_columns if col not in normalized.columns]
     if missing_columns:
         missing = ", ".join(missing_columns)
         raise ValueError(f"Missing required columns for feature preparation: {missing}")
 
-    normalized["anio"] = pd.to_numeric(normalized["anio"], errors="coerce")
-    normalized["target"] = pd.to_numeric(normalized["target"], errors="coerce")
+    normalized = normalized.dropna(subset=["anio", "kilometraje", "target"]).copy()
 
-    # Keep rows where core numeric inputs exist.
-    normalized = normalized.dropna(subset=["anio", "target"]).copy()
+    cilindrada_min = VALIDATION_LIMITS["cilindrada"]["min"]
+    cilindrada_max = VALIDATION_LIMITS["cilindrada"]["max"]
+    normalized.loc[
+        ~normalized["cilindrada"].between(cilindrada_min, cilindrada_max, inclusive="both"),
+        "cilindrada",
+    ] = np.nan
+    if normalized["cilindrada"].isna().all():
+        normalized["cilindrada"] = 1.6
+    else:
+        normalized["cilindrada"] = normalized["cilindrada"].fillna(normalized["cilindrada"].median())
 
     normalized["anio"] = normalized["anio"].astype(int)
+    normalized["kilometraje"] = normalized["kilometraje"].astype(float).clip(lower=0)
     normalized["target"] = normalized["target"].astype(float)
+    normalized["antiguedad"] = 2026 - normalized["anio"]
 
     data = normalized
-    data["antiguedad"] = 2026 - data["anio"]
 
     os.makedirs("models", exist_ok=True)
-    for column in categorical_columns:
+    for column in CATEGORICAL_COLUMNS:
         encoder = LabelEncoder()
         data[column] = (
             data[column]
@@ -270,7 +303,7 @@ def prepare_features(df: pd.DataFrame):
         joblib.dump(encoder, encoder_path)
 
     y = data["target"]
-    X = data.drop(columns=["target"])
+    X = data[FEATURE_ORDER].copy()
     return X, y
 
 
@@ -322,7 +355,10 @@ def train_model(X, y):
 
     os.makedirs("models", exist_ok=True)
     model_path = os.path.join("models", "vehicle_model.pkl")
+    scaler_path = os.path.join("models", "vehicle_model_scaler.pkl")
     joblib.dump(model, model_path)
+    if os.path.exists(scaler_path):
+        os.remove(scaler_path)
 
     metrics = {
         "mae": mae,
@@ -336,6 +372,7 @@ def train_model(X, y):
         "cv_mape_std": float(np.nanstd(cv_scores["test_mape"])),
         "mape_min_target": 1000.0,
         "model_path": model_path,
+        "scaler_path": None,
     }
 
     print(f"MAE: {mae:.4f}")
@@ -359,84 +396,10 @@ def export_metadata(df: pd.DataFrame, model, feature_cols):
 
     The file intentionally excludes raw records.
     """
-    categorical_columns = [
-        "marca",
-        "tipo",
-        "transmision",
-        "combustible",
-        "provincia",
-        "color",
-        "estado_motor",
-        "estado_carroceria",
-    ]
-
-    source_map = {
-        "anio": ["anio", "Año"],
-        "marca": ["marca", "Marca"],
-        "color": ["color", "Color"],
-        "provincia": ["provincia", "Agencia"],
-        "tipo": ["tipo", "Línea Negocio"],
-    }
-
-    data = df.copy()
-    normalized = pd.DataFrame(index=data.index)
-    for target_col, candidates in source_map.items():
-        for candidate in candidates:
-            if candidate in data.columns:
-                normalized[target_col] = data[candidate]
-                break
-
-    desc = data.get("Descripción", pd.Series("", index=data.index)).fillna("").astype(str)
-    comments = data.get("Comentario", pd.Series("", index=data.index)).fillna("").astype(str)
-    obs = data.get("Observación Precio", pd.Series("", index=data.index)).fillna("").astype(str)
-    combined_notes = (comments + " " + obs).str.upper()
-
-    if "transmision" not in normalized.columns:
-        normalized["transmision"] = "DESCONOCIDO"
-        normalized.loc[
-            desc.str.contains(r"\bT/A\b|\bCVT\b", case=False, regex=True),
-            "transmision",
-        ] = "AUTOMATICA"
-        normalized.loc[
-            desc.str.contains(r"\bT/M\b", case=False, regex=True),
-            "transmision",
-        ] = "MANUAL"
-
-    if "combustible" not in normalized.columns:
-        normalized["combustible"] = "DESCONOCIDO"
-        normalized.loc[
-            desc.str.contains(r"HYBRID|HSD|HIBRID", case=False, regex=True),
-            "combustible",
-        ] = "HIBRIDO"
-        normalized.loc[
-            desc.str.contains(r"CRDI|DIESEL", case=False, regex=True),
-            "combustible",
-        ] = "DIESEL"
-        normalized.loc[
-            desc.str.contains(r"TURBO|VVTI|DUALJET|BOOSTERJET|EFI", case=False, regex=True),
-            "combustible",
-        ] = "GASOLINA"
-
-    if "estado_motor" not in normalized.columns:
-        normalized["estado_motor"] = "DESCONOCIDO"
-        normalized.loc[
-            combined_notes.str.contains(r"FALLA|MECAN", regex=True),
-            "estado_motor",
-        ] = "REGULAR"
-        normalized.loc[
-            combined_notes.str.contains(r"MANTENIMIENTO|MANTENIMIENTOS EN CASA", regex=True),
-            "estado_motor",
-        ] = "BUENO"
-
-    if "estado_carroceria" not in normalized.columns:
-        normalized["estado_carroceria"] = "DESCONOCIDO"
-        normalized.loc[
-            combined_notes.str.contains(r"PINTAR|DETALLES", regex=True),
-            "estado_carroceria",
-        ] = "REGULAR"
+    normalized = build_normalized_dataframe(df, include_target=False)
 
     unique_categories = {}
-    for column in categorical_columns:
+    for column in CATEGORICAL_COLUMNS:
         if column not in feature_cols or column not in normalized.columns:
             continue
 
@@ -456,9 +419,11 @@ def export_metadata(df: pd.DataFrame, model, feature_cols):
             feature_importances[feature] = float(importances[idx])
 
     metadata = {
+        "feature_order": feature_cols,
         "categorical_values": unique_categories,
         "feature_importances": feature_importances,
         "metrics": getattr(model, "training_metrics", {}),
+        "validation_limits": VALIDATION_LIMITS,
     }
 
     os.makedirs("models", exist_ok=True)

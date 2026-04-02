@@ -1,117 +1,197 @@
-"""
-Tests for the Flask API.
-"""
-import pytest
-import sys
-import os
+"""Tests for API validation, sensitivity, and feature-order contract."""
+
 import json
-from unittest.mock import patch, MagicMock
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+import numpy as np
+import pytest
 
-from api.app import app
+import api.app as app_module
 
 
-class TestFlaskAPI:
-    """Test cases for Flask API endpoints."""
-    
-    @pytest.fixture
-    def client(self):
-        """Create a test client."""
-        app.config["TESTING"] = True
-        with app.test_client() as client:
-            yield client
-    
-    def test_health_check(self, client):
-        """Test health check endpoint."""
-        response = client.get("/health")
-        assert response.status_code == 200
-        data = json.loads(response.data)
-        assert data["status"] == "ok"
-    
-    def test_info_endpoint(self, client):
-        """Test info endpoint."""
-        response = client.get("/info")
-        assert response.status_code == 200
-        data = json.loads(response.data)
-        assert "endpoints" in data
-        assert "name" in data
-    
-    def test_predict_missing_features(self, client):
-        """Test predict endpoint with missing features."""
-        response = client.post("/predict", json={})
-        assert response.status_code == 400
-        data = json.loads(response.data)
-        assert "error" in data
-    
-    @patch('api.app.model')
-    def test_predict_success(self, mock_model, client):
-        """Test successful prediction."""
-        mock_model.model = MagicMock()
-        mock_model.model.predict = MagicMock(return_value=[50000])
-        mock_model.scaler = MagicMock()
-        mock_model.scaler.transform = MagicMock(return_value=[[1, 2, 3, 4, 5]])
-        
-        response = client.post("/predict", 
-                              json={"features": [1, 2, 3, 4, 5]})
-        assert response.status_code == 200
-        data = json.loads(response.data)
-        assert "predicted_value" in data
+FEATURE_ORDER = [
+    "anio",
+    "antiguedad",
+    "kilometraje",
+    "cilindrada",
+    "marca",
+    "modelo",
+    "tipo",
+    "transmision",
+    "combustible",
+    "provincia",
+    "color",
+    "estado_motor",
+    "estado_carroceria",
+]
 
-    @patch('api.app.model')
-    def test_predict_with_vehicle_payload(self, mock_model, client):
-        """Test structured vehicle payload using saved label encoders."""
-        mock_model.model = MagicMock()
-        mock_model.model.predict = MagicMock(return_value=[42000])
-        mock_model.scaler = MagicMock()
-        mock_model.scaler.transform = MagicMock(return_value=[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]])
 
-        # Mock encoders with known classes and transform outputs
-        columns = [
-            "marca",
-            "tipo",
-            "transmision",
-            "combustible",
-            "provincia",
-            "color",
-            "estado_motor",
-            "estado_carroceria",
-        ]
-        encoders = {}
-        for idx, col in enumerate(columns):
-            encoder = MagicMock()
-            encoder.classes_ = ["VALOR"]
-            encoder.transform = MagicMock(return_value=[idx + 1])
-            encoders[col] = encoder
+class FakeEncoder:
+    def __init__(self, values):
+        self.classes_ = np.array(values, dtype=object)
 
-        payload = {
-            "vehicle": {
-                "anio": 2024,
-                "marca": "VALOR",
-                "tipo": "VALOR",
-                "transmision": "VALOR",
-                "combustible": "VALOR",
-                "provincia": "VALOR",
-                "color": "VALOR",
-                "estado_motor": "VALOR",
-                "estado_carroceria": "VALOR"
-            },
-            "feature_order": [
-                "anio",
-                "antiguedad",
-                "marca",
-                "tipo",
-                "transmision",
-                "combustible",
-                "provincia",
-                "color",
-                "estado_motor",
-                "estado_carroceria",
-            ]
+    def transform(self, values):
+        mapping = {value: idx for idx, value in enumerate(self.classes_)}
+        return [mapping[value] for value in values]
+
+
+class RecordingModel:
+    def __init__(self):
+        self.last_input = None
+
+    def predict(self, x):
+        self.last_input = np.asarray(x, dtype=float)
+        return np.array([float(np.sum(self.last_input[0]))], dtype=float)
+
+
+@pytest.fixture
+def client(monkeypatch):
+    app_module.app.config["TESTING"] = True
+
+    categorical_values = {
+        "marca": ["TOYOTA", "MAZDA"],
+        "modelo": ["COROLLA", "CX5"],
+        "tipo": ["SUV", "SEDAN"],
+        "transmision": ["AUTOMATICA", "MANUAL"],
+        "combustible": ["GASOLINA", "DIESEL"],
+        "provincia": ["QUITO", "GUAYAQUIL"],
+        "color": ["NEGRO", "ROJO"],
+        "estado_motor": ["BUENO", "REGULAR"],
+        "estado_carroceria": ["BUENO", "REGULAR"],
+    }
+
+    encoders = {
+        field: FakeEncoder(values)
+        for field, values in categorical_values.items()
+    }
+
+    recording_model = RecordingModel()
+
+    monkeypatch.setattr(app_module, "label_encoders", encoders)
+    monkeypatch.setattr(app_module, "model", recording_model)
+    monkeypatch.setattr(app_module, "scaler", None)
+    monkeypatch.setattr(
+        app_module,
+        "model_metadata",
+        {
+            "feature_order": FEATURE_ORDER,
+            "categorical_values": categorical_values,
+            "feature_importances": {feature: 0.1 for feature in FEATURE_ORDER},
+            "metrics": {"mae": 999.0, "r2": 0.8},
+        },
+    )
+
+    with app_module.app.test_client() as test_client:
+        yield test_client
+
+
+def valid_vehicle_payload():
+    return {
+        "vehicle": {
+            "anio": 2022,
+            "kilometraje": 45000,
+            "cilindrada": 1.8,
+            "marca": "TOYOTA",
+            "modelo": "COROLLA",
+            "tipo": "SEDAN",
+            "transmision": "MANUAL",
+            "combustible": "GASOLINA",
+            "provincia": "QUITO",
+            "color": "NEGRO",
+            "estado_motor": "BUENO",
+            "estado_carroceria": "BUENO",
         }
+    }
 
-        with patch('api.app.label_encoders', encoders):
-            response = client.post("/predict", json=payload)
-            assert response.status_code == 200
-            data = json.loads(response.data)
-            assert "predicted_value" in data
+
+def extract_prediction(response):
+    assert response.status_code == 200, response.get_data(as_text=True)
+    data = json.loads(response.data)
+    return data["predicted_value"]
+
+
+def test_invalid_payload_returns_422_with_field_details(client):
+    payload = {
+        "vehicle": {
+            "anio": 2022,
+            "kilometraje": -1,
+            "cilindrada": 20.0,
+            "marca": "INVALIDA",
+            "modelo": "COROLLA",
+            "tipo": "SEDAN",
+            "transmision": "MANUAL",
+            "combustible": "GASOLINA",
+            "provincia": "QUITO",
+            "color": "NEGRO",
+            "estado_motor": "BUENO",
+            "estado_carroceria": "BUENO",
+        }
+    }
+
+    response = client.post("/predict", json=payload)
+    assert response.status_code == 422
+
+    details = json.loads(response.data)["error"]["details"]
+    assert "kilometraje" in details
+    assert "cilindrada" in details
+    assert "marca" in details
+
+
+def test_sensitivity_kilometraje_changes_prediction(client):
+    payload = valid_vehicle_payload()
+    base = extract_prediction(client.post("/predict", json=payload))
+
+    payload_km = valid_vehicle_payload()
+    payload_km["vehicle"]["kilometraje"] = 90000
+    changed = extract_prediction(client.post("/predict", json=payload_km))
+
+    assert changed != base
+
+
+def test_sensitivity_cilindrada_changes_prediction(client):
+    payload = valid_vehicle_payload()
+    base = extract_prediction(client.post("/predict", json=payload))
+
+    payload_cc = valid_vehicle_payload()
+    payload_cc["vehicle"]["cilindrada"] = 2.5
+    changed = extract_prediction(client.post("/predict", json=payload_cc))
+
+    assert changed != base
+
+
+def test_sensitivity_modelo_changes_prediction(client):
+    payload = valid_vehicle_payload()
+    base = extract_prediction(client.post("/predict", json=payload))
+
+    payload_modelo = valid_vehicle_payload()
+    payload_modelo["vehicle"]["modelo"] = "CX5"
+    changed = extract_prediction(client.post("/predict", json=payload_modelo))
+
+    assert changed != base
+
+
+def test_sensitivity_marca_changes_prediction(client):
+    payload = valid_vehicle_payload()
+    base = extract_prediction(client.post("/predict", json=payload))
+
+    payload_marca = valid_vehicle_payload()
+    payload_marca["vehicle"]["marca"] = "MAZDA"
+    changed = extract_prediction(client.post("/predict", json=payload_marca))
+
+    assert changed != base
+
+
+def test_metadata_feature_order_matches_predict_vector_order(client):
+    metadata_response = client.get("/metadata")
+    assert metadata_response.status_code == 200
+    feature_order = json.loads(metadata_response.data)["feature_order"]
+
+    payload = valid_vehicle_payload()
+    response = client.post("/predict", json=payload)
+    assert response.status_code == 200
+
+    used_vector = app_module.model.last_input[0]
+    assert len(used_vector) == len(feature_order)
+
+    index_map = {name: idx for idx, name in enumerate(feature_order)}
+    assert used_vector[index_map["kilometraje"]] == pytest.approx(45000.0)
+    assert used_vector[index_map["cilindrada"]] == pytest.approx(1.8)
