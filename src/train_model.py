@@ -3,13 +3,39 @@ Model training module for vehicle valuation ML.
 """
 import os
 import pickle
-import re
 import pandas as pd
 import joblib
-from sklearn.model_selection import train_test_split
+import numpy as np
+from xgboost import XGBRegressor
+from sklearn.model_selection import train_test_split, KFold, cross_validate
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_absolute_error, r2_score, make_scorer
+
+
+def robust_mape(y_true, y_pred, min_target: float = 1000.0) -> float:
+    """Compute MAPE (%) excluding very small target values.
+
+    Targets with absolute value below ``min_target`` are excluded to avoid
+    unstable percentage errors.
+    """
+    y_true_np = np.asarray(y_true, dtype=float)
+    y_pred_np = np.asarray(y_pred, dtype=float)
+    valid_mask = np.abs(y_true_np) >= min_target
+
+    if not valid_mask.any():
+        return float("nan")
+
+    return float(
+        np.mean(
+            np.abs(
+                (y_true_np[valid_mask] - y_pred_np[valid_mask])
+                / y_true_np[valid_mask]
+            )
+        )
+        * 100
+    )
 
 
 def load_and_clean_data(filepath: str) -> pd.DataFrame:
@@ -247,6 +273,78 @@ def prepare_features(df: pd.DataFrame):
     return X, y
 
 
+def train_model(X, y):
+    """Train an XGBoost regressor and return model plus metrics.
+
+    Steps:
+    1. Split data into train/test sets using 80/20.
+    2. Run 5-fold cross-validation on the training split.
+    3. Train a final model on the training split.
+    4. Evaluate holdout MAE, R2, and MAPE on test split.
+    5. Persist trained model to models/vehicle_model.pkl with joblib.
+    """
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
+
+    model = XGBRegressor(
+        n_estimators=300,
+        max_depth=6,
+        learning_rate=0.1,
+        subsample=0.8,
+        colsample_bytree=0.8,
+        random_state=42,
+        objective="reg:squarederror",
+    )
+
+    cv = KFold(n_splits=5, shuffle=True, random_state=42)
+    robust_mape_scorer = make_scorer(robust_mape, greater_is_better=False)
+    cv_scores = cross_validate(
+        model,
+        X_train,
+        y_train,
+        cv=cv,
+        scoring={
+            "mae": "neg_mean_absolute_error",
+            "r2": "r2",
+            "mape": robust_mape_scorer,
+        },
+        n_jobs=-1,
+    )
+
+    model.fit(X_train, y_train)
+    predictions = model.predict(X_test)
+
+    mae = float(mean_absolute_error(y_test, predictions))
+    r2 = float(r2_score(y_test, predictions))
+    mape = robust_mape(y_test, predictions)
+
+    os.makedirs("models", exist_ok=True)
+    model_path = os.path.join("models", "vehicle_model.pkl")
+    joblib.dump(model, model_path)
+
+    metrics = {
+        "mae": mae,
+        "r2": r2,
+        "mape": mape,
+        "cv_mae_mean": float(-cv_scores["test_mae"].mean()),
+        "cv_mae_std": float(cv_scores["test_mae"].std()),
+        "cv_r2_mean": float(cv_scores["test_r2"].mean()),
+        "cv_r2_std": float(cv_scores["test_r2"].std()),
+        "cv_mape_mean": float(-np.nanmean(cv_scores["test_mape"])),
+        "cv_mape_std": float(np.nanstd(cv_scores["test_mape"])),
+        "mape_min_target": 1000.0,
+        "model_path": model_path,
+    }
+
+    print(f"MAE: {mae:.4f}")
+    print(f"R2: {r2:.4f}")
+    print(f"MAPE: {mape:.4f}%")
+    print(f"Model saved to {model_path}")
+
+    return model, metrics
+
+
 class VehicleValuationModel:
     """Train and save vehicle valuation model."""
     
@@ -296,3 +394,9 @@ class VehicleValuationModel:
 
 if __name__ == "__main__":
     print("Vehicle Valuation Model Training Module")
+    dataset_path = os.path.join("data", "data.csv")
+    cleaned_df = load_and_clean_data(dataset_path)
+    X_data, y_data = prepare_features(cleaned_df)
+    _, training_metrics = train_model(X_data, y_data)
+    print("Training metrics:")
+    print(training_metrics)
