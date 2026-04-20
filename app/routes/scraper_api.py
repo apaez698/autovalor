@@ -94,6 +94,52 @@ async def consultar_precio(marca: str, modelo: str, anio: int):
     return r.json()[0]
 
 
+async def _fetch_all_rows(url: str, params: dict) -> list:
+    """Pagina sobre Supabase para traer TODAS las filas."""
+    all_rows: list = []
+    page_size = 1000
+    offset = 0
+    headers = {**supabase_headers(), "Prefer": "count=exact"}
+    async with httpx.AsyncClient() as client:
+        while True:
+            page_params = {**params, "limit": str(page_size), "offset": str(offset)}
+            r = await client.get(url, headers=headers, params=page_params, timeout=15)
+            if r.status_code not in (200, 206):
+                raise HTTPException(status_code=500, detail=f"Supabase error: {r.text[:200]}")
+            rows = r.json()
+            if not rows:
+                break
+            all_rows.extend(rows)
+            if len(rows) < page_size:
+                break
+            offset += page_size
+    return all_rows
+
+
+@router.get("/api/scraper/marcas")
+async def listar_marcas():
+    """Devuelve marcas distintas de scraper_listings."""
+    rows = await _fetch_all_rows(
+        supabase_url("scraper_listings"),
+        {"select": "brand", "brand": "not.is.null"},
+    )
+    marcas = sorted({row["brand"] for row in rows if row.get("brand")})
+    return {"marcas": marcas, "total": len(marcas)}
+
+
+@router.get("/api/scraper/marcas/{marca}/modelos")
+async def listar_modelos_por_marca(marca: str):
+    """Devuelve modelos distintos para una marca de scraper_listings."""
+    rows = await _fetch_all_rows(
+        supabase_url("scraper_listings"),
+        {"select": "model", "brand": f"ilike.{marca}", "model": "not.is.null"},
+    )
+    if not rows:
+        raise HTTPException(status_code=404, detail=f"Marca '{marca}' no encontrada")
+    modelos = sorted({row["model"] for row in rows if row.get("model")})
+    return {"marca": marca, "modelos": modelos, "total": len(modelos)}
+
+
 @router.post("/api/retrain")
 async def retrain_model_endpoint(
     scraped_csv: Optional[str] = None,

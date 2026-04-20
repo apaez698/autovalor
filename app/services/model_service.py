@@ -38,18 +38,22 @@ vehicle_catalog: list[dict] = []
 def _download_from_hf():
     """Download model artifacts from Hugging Face Hub if not present locally."""
     MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    token = os.getenv("HF_TOKEN")
     for filename in HF_FILES:
         local_path = MODELS_DIR / filename
         if not local_path.exists():
             try:
-                downloaded = hf_hub_download(
+                cached_path = hf_hub_download(
                     repo_id=HF_REPO_ID,
                     filename=filename,
-                    local_dir=str(MODELS_DIR),
+                    token=token,
                 )
-                print(f"Downloaded {filename} from HF Hub")
+                # Copy from HF cache to our models/ directory
+                import shutil
+                shutil.copy2(cached_path, local_path)
+                print(f"Downloaded {filename} from HF Hub -> {local_path}")
             except Exception as e:
-                print(f"Warning: could not download {filename}: {e}")
+                print(f"ERROR: could not download {filename}: {e}")
 
 
 def load_resources():
