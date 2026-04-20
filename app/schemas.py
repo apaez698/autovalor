@@ -60,25 +60,6 @@ class PrecioMercadoBatch(BaseModel):
     registros: list[PrecioMercado]
 
 
-class PredictRequest(BaseModel):
-    """Accepts { vehicle: {...} } wrapper or flat fields."""
-    vehicle: Optional[VehicleInput] = None
-    marca: Optional[str] = None
-    modelo: Optional[str] = None
-    anio: Optional[int] = None
-    kilometraje: Optional[int] = None
-    motor_cc: Optional[float] = None
-    potencia_hp: Optional[float] = None
-    carroceria: Optional[str] = None
-    transmision: Optional[str] = None
-    tipo_combustible: Optional[str] = None
-    provincia: Optional[str] = None
-    traccion: Optional[str] = None
-    segmento: Optional[str] = None
-    pais_origen: Optional[str] = None
-    color: Optional[str] = None
-
-
 class ScraperRunRequest(BaseModel):
     scraper: str = "patiotuerca"
     años: list[int] = list(range(2018, 2027))

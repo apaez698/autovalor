@@ -10,14 +10,23 @@ from typing import Optional
 import joblib
 import numpy as np
 from fastapi import HTTPException
+from huggingface_hub import hf_hub_download
 
 from ml.feature_config import CATEGORICAL_COLUMNS, FEATURE_ORDER, VALIDATION_LIMITS
+
+HF_REPO_ID = "quipmakeitwork/autovalor-artifacts"
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 MODELS_DIR = BASE_DIR / "models"
 CATALOG_PATH = MODELS_DIR / "vehicle_catalog.json"
 METADATA_PATH = MODELS_DIR / "model_metadata.json"
 MODEL_PATH = MODELS_DIR / "vehicle_model.pkl"
+
+HF_FILES = [
+    "vehicle_model.pkl",
+    "model_metadata.json",
+    *[f"{col}_label_encoder.joblib" for col in CATEGORICAL_COLUMNS],
+]
 
 
 model = None
@@ -26,8 +35,29 @@ model_metadata: dict = {}
 vehicle_catalog: list[dict] = []
 
 
+def _download_from_hf():
+    """Download model artifacts from Hugging Face Hub if not present locally."""
+    MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    for filename in HF_FILES:
+        local_path = MODELS_DIR / filename
+        if not local_path.exists():
+            try:
+                downloaded = hf_hub_download(
+                    repo_id=HF_REPO_ID,
+                    filename=filename,
+                    local_dir=str(MODELS_DIR),
+                )
+                print(f"Downloaded {filename} from HF Hub")
+            except Exception as e:
+                print(f"Warning: could not download {filename}: {e}")
+
+
 def load_resources():
     global model, label_encoders, model_metadata, vehicle_catalog
+
+    # Download missing artifacts from HF Hub
+    if not MODEL_PATH.exists():
+        _download_from_hf()
 
     if MODEL_PATH.exists():
         model = joblib.load(MODEL_PATH)
@@ -54,7 +84,7 @@ def strip_accents(s: str) -> str:
 
 
 def predict(vehicle) -> dict:
-    """Run XGBoost prediction for a VehicleInput."""
+    """Run XGBoost prediction locally."""
     if model is None:
         raise HTTPException(status_code=503, detail="Modelo no cargado")
 
