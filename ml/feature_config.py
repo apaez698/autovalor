@@ -7,20 +7,22 @@ CURRENT_YEAR = datetime.now().year
 CATEGORICAL_COLUMNS = [
     "marca",
     "modelo",
-    "tipo",
+    "carroceria",
     "transmision",
-    "combustible",
+    "tipo_combustible",
     "provincia",
+    "traccion",
+    "segmento",
+    "pais_origen",
     "color",
-    "estado_motor",
-    "estado_carroceria",
 ]
 
 NUMERIC_COLUMNS = [
     "anio",
     "antiguedad",
     "kilometraje",
-    "cilindrada",
+    "motor_cc",
+    "potencia_hp",
 ]
 
 FEATURE_ORDER = [*NUMERIC_COLUMNS, *CATEGORICAL_COLUMNS]
@@ -28,5 +30,6 @@ FEATURE_ORDER = [*NUMERIC_COLUMNS, *CATEGORICAL_COLUMNS]
 VALIDATION_LIMITS = {
     "anio": {"min": 1980, "max": CURRENT_YEAR + 1},
     "kilometraje": {"min": 0, "max": 1_000_000},
-    "cilindrada": {"min": 0.6, "max": 8.0},
+    "motor_cc": {"min": 600, "max": 8000},
+    "potencia_hp": {"min": 30, "max": 800},
 }

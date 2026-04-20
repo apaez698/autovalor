@@ -6,11 +6,11 @@ import os
 import numpy as np
 import pandas as pd
 
-from src.feature_config import FEATURE_ORDER
-from src.train_model import export_metadata, prepare_features
+from ml.feature_config import FEATURE_ORDER
+from ml.train import export_metadata, prepare_features
 
 
-REQUIRED_FEATURES = {"kilometraje", "cilindrada", "modelo", "marca"}
+REQUIRED_FEATURES = {"kilometraje", "motor_cc", "potencia_hp", "modelo", "marca"}
 
 
 def build_training_df() -> pd.DataFrame:
@@ -20,26 +20,24 @@ def build_training_df() -> pd.DataFrame:
             "Marca": ["TOYOTA", "MAZDA", "TOYOTA", "KIA", "NISSAN"],
             "Modelo": ["COROLLA", "CX5", "YARIS", "RIO", "SENTRA"],
             "Color": ["NEGRO", "ROJO", "AZUL", "BLANCO", "PLATA"],
-            "Agencia": ["QUITO", "GUAYAQUIL", "QUITO", "CUENCA", "MANTA"],
-            "Línea Negocio": ["SUV", "SUV", "SEDAN", "SEDAN", "SEDAN"],
             "Recorrido": [50000, 30000, 70000, 20000, 90000],
-            "Descripción": [
-                "COROLLA 1.8L 4P T/M",
-                "CX5 2.5L SUV T/A",
-                "YARIS 1.5L 4P T/M",
-                "RIO 1.4L 4P T/M",
-                "SENTRA 2.0L 4P T/A",
-            ],
-            "Comentario": ["", "", "", "", ""],
-            "Observación Precio": ["", "", "", "", ""],
+            "carroceria": ["sedán", "SUV", "hatchback", "sedán", "sedán"],
+            "motor_cc": [1800.0, 2500.0, 1500.0, 1400.0, 2000.0],
+            "potencia_hp": [140.0, 187.0, 107.0, 100.0, 149.0],
+            "transmision": ["manual", "automática", "manual", "manual", "automática"],
+            "traccion": ["4x2", "4x4", "4x2", "4x2", "4x2"],
+            "tipo_combustible": ["gasolina", "gasolina", "gasolina", "gasolina", "gasolina"],
+            "provincia": ["Pichincha", "Guayas", "Pichincha", "Azuay", "Guayas"],
+            "segmento": ["medio", "medio-alto", "económico", "económico", "medio"],
+            "pais_origen": ["Japón", "Japón", "Japón", "Corea del Sur", "Japón"],
             "Precio Final Editado": [15000, 22000, 12000, 18000, 9000],
         }
     )
 
 
-def test_prepare_features_contains_required_columns():
+def test_prepare_features_contains_required_columns(tmp_path):
     df = build_training_df()
-    X, y = prepare_features(df)
+    X, y = prepare_features(df, output_dir=str(tmp_path))
 
     assert REQUIRED_FEATURES.issubset(set(X.columns))
     assert X.columns.tolist() == FEATURE_ORDER

@@ -1,0 +1,5335 @@
+[
+  {
+    "marca": "TOYOTA",
+    "modelo": "RAV4",
+    "versiones": [
+      "2.4L",
+      "2L",
+      "ELITE",
+      "ELITE FACE LIFT",
+      "HYBRID LIMITED",
+      "HYBRID XSE",
+      "IV-G",
+      "IV-G DELUXE",
+      "IV-G ELITE",
+      "IV-G ELITE FACE LIFT",
+      "LE",
+      "LE ELITE",
+      "LIMITED",
+      "V-G L",
+      "V-G LE",
+      "V-G LIMITED",
+      "V-G LS SPORT",
+      "V-G PREMIUM",
+      "XLE"
+    ],
+    "año_min": 1999,
+    "año_max": 2026,
+    "count": 73,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 170.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "SUZUKI",
+    "modelo": "GRAND VITARA",
+    "versiones": [
+      "DUALJET + SHVS 1.5L",
+      "GLX DUALJET + SHVS",
+      "GRAND VITARA DUALJET + SHVS",
+      "SZ",
+      "SZ NEXT",
+      "SZ VVT"
+    ],
+    "año_min": 2008,
+    "año_max": 2025,
+    "count": 42,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 140.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "COROLLA CROSS",
+    "versiones": [
+      "HYBRID HIGH L",
+      "HYBRID HIGH LE",
+      "HYBRID MID L",
+      "HYBRID MID LE"
+    ],
+    "año_min": 2022,
+    "año_max": 2026,
+    "count": 37,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1800.0,
+      "potencia_hp": 122.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "PRIUS",
+    "versiones": [
+      "3G HYBRID SYNERGY DRIVE",
+      "C SPORT",
+      "C SPORT DELUXE HSD FACE LIFT",
+      "C SPORT HSD",
+      "C SPORT SE HSD",
+      "PRIUS C SPORT",
+      "SE"
+    ],
+    "año_min": 2010,
+    "año_max": 2020,
+    "count": 30,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1500.0,
+      "potencia_hp": 99.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "PICANTO",
+    "versiones": [
+      "GT-LIMITED FACE LIFT",
+      "GT-LINE",
+      "LX",
+      "LX PRO",
+      "PRO PAQUETE",
+      "X LINE",
+      "X-LINE"
+    ],
+    "año_min": 2015,
+    "año_max": 2025,
+    "count": 29,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1200.0,
+      "potencia_hp": 84.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "COROLLA",
+    "versiones": [
+      "GLI",
+      "XEI",
+      "XEI SE",
+      "XEI XLE",
+      "XIG",
+      "XLE",
+      "XLI",
+      "XLI G HV SEG SE",
+      "XLI-G HV SEG SE",
+      "XRS LIMITED"
+    ],
+    "año_min": 2002,
+    "año_max": 2024,
+    "count": 29,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1800.0,
+      "potencia_hp": 121.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "FORTUNER 2G",
+    "versiones": [
+      "2G DVVTI FULL",
+      "2G V6 DELUXE",
+      "BASICA",
+      "DELUXE",
+      "ELEGANCE",
+      "VX"
+    ],
+    "año_min": 2017,
+    "año_max": 2021,
+    "count": 29,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2700.0,
+      "potencia_hp": 166.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "FORTUNER 3G",
+    "versiones": [
+      "3G DVVTI LX",
+      "3G DVVTI LX 2.7L",
+      "FORTUNER 3G DVVTI LX 2.7L",
+      "LEGENDER",
+      "VX"
+    ],
+    "año_min": 2022,
+    "año_max": 2026,
+    "count": 29,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2700.0,
+      "potencia_hp": 166.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "X TRAIL",
+    "versiones": [
+      "ADVANCE",
+      "CLASSIC",
+      "E-POWER + E-4ORCE 4G ADVANCE",
+      "E-POWER + E-4ORCE 4G EXCLUSIVE",
+      "EXCLUSIVE",
+      "SENSE",
+      "SENSE 2ROW",
+      "XTREME"
+    ],
+    "año_min": 2007,
+    "año_max": 2024,
+    "count": 28,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2500.0,
+      "potencia_hp": 170.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "NEW YARIS",
+    "versiones": [
+      "BASIC",
+      "FASTBACK 1 DUAL VVTI",
+      "PREMIUM",
+      "SE",
+      "SPORT BASIC",
+      "SPORT PREMIUM",
+      "SPORT SE",
+      "SPORT XLE",
+      "XLE"
+    ],
+    "año_min": 2018,
+    "año_max": 2026,
+    "count": 28,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1500.0,
+      "potencia_hp": 106.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "SPORTAGE",
+    "versiones": [
+      "ACTIVE",
+      "ACTIVE CKD",
+      "ACTIVE EX",
+      "EUROPA 2.0 MPI",
+      "GT LINE",
+      "R CKD 2L",
+      "R CKD ANIVERSARIO",
+      "R CKD SPORT",
+      "REVOLUTION LX"
+    ],
+    "año_min": 2010,
+    "año_max": 2024,
+    "count": 27,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 155.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "RAIZE",
+    "versiones": [
+      "DUAL VVT 1.2L",
+      "GR",
+      "L",
+      "LE",
+      "RAIZE DUAL VVT 1.2L",
+      "XLE"
+    ],
+    "año_min": 2022,
+    "año_max": 2025,
+    "count": 26,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1200.0,
+      "potencia_hp": 80.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "GRAND VITARA",
+    "versiones": [
+      "2L",
+      "DLX",
+      "STD"
+    ],
+    "año_min": 2006,
+    "año_max": 2016,
+    "count": 25,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 140.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "RUSH",
+    "versiones": [
+      "L",
+      "LE",
+      "SPORT"
+    ],
+    "año_min": 2021,
+    "año_max": 2025,
+    "count": 25,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 102.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "TUCSON",
+    "versiones": [
+      "2L",
+      "ADVANCE",
+      "GLS",
+      "IX",
+      "NX4E 4G GL",
+      "NX4E 4G HGS",
+      "STD",
+      "TL 3G FACE LIFT FULL",
+      "TL 3G FACELIFT",
+      "TL 3G FACELIFT FULL"
+    ],
+    "año_min": 2006,
+    "año_max": 2024,
+    "count": 24,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 155.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "3008",
+    "versiones": [
+      "ACTIVE",
+      "ACTIVE DIESEL GRIP CONTROL",
+      "ACTIVE GRIP CONTROL",
+      "ACTIVE GRIP CONTROL FACE LIFT",
+      "GT LINE",
+      "GT LINE FACE LIFT",
+      "GT LINE GRIP CONTROL"
+    ],
+    "año_min": 2018,
+    "año_max": 2026,
+    "count": 24,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 150.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "QASHQAI",
+    "versiones": [
+      "1.6L",
+      "ADVANCE",
+      "ADVANCE FACE LIFT",
+      "DRIVE FACE LIFT",
+      "EXCLUSIVE FACE LIFT",
+      "SENSE",
+      "SENSE FACE LIFT"
+    ],
+    "año_min": 2015,
+    "año_max": 2025,
+    "count": 22,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 142.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "FORTUNER",
+    "versiones": [
+      "4L V-6",
+      "4L V-6 TAI",
+      "4L V-6 TAI CUERO",
+      "ELITE"
+    ],
+    "año_min": 2008,
+    "año_max": 2015,
+    "count": 22,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2700.0,
+      "potencia_hp": 163.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "TAILANDIA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "HILUX 8G",
+    "versiones": [
+      "BASICO",
+      "GO",
+      "GO DVVTI",
+      "L 2.4 TURBODIESEL",
+      "LE",
+      "LE DVVTI",
+      "LE DVVTI 2.7L",
+      "LE DVVTI SR",
+      "REVO DVVTI 2.7L",
+      "REVO DVVTI 2.7L D/C 4X2",
+      "SR",
+      "SRV DELUXE"
+    ],
+    "año_min": 2022,
+    "año_max": 2026,
+    "count": 22,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2700.0,
+      "potencia_hp": 166.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "TAILANDIA"
+    }
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "2008 2G",
+    "versiones": [
+      "ACTIVE",
+      "ACTIVE 1.2TURBO",
+      "ALLURE",
+      "GT LINE",
+      "GT LINE 1.2TURBO"
+    ],
+    "año_min": 2021,
+    "año_max": 2026,
+    "count": 21,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1200.0,
+      "potencia_hp": 100.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "YARIS",
+    "versiones": [
+      "NITRO",
+      "PREMIUM",
+      "SPORT DELUXE",
+      "SPORT PREMIUM",
+      "SPORT STD",
+      "VVTI 1.3L STD"
+    ],
+    "año_min": 2007,
+    "año_max": 2022,
+    "count": 20,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1500.0,
+      "potencia_hp": 107.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "SPARK",
+    "versiones": [
+      "ACTIVO LT",
+      "GT",
+      "GT FACE LIFT ACTIV",
+      "GT FACE LIFT LS",
+      "GT FACE LIFT LT",
+      "GT FACE LIFT PREMIER",
+      "LIFE",
+      "SPARK LIFE"
+    ],
+    "año_min": 2010,
+    "año_max": 2022,
+    "count": 19,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1200.0,
+      "potencia_hp": 80.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "HILUX",
+    "versiones": [
+      "BASIC",
+      "D4D 2.5L TURBO",
+      "DVVTI 2.7L D/C 4X2",
+      "LE",
+      "LE 2.7L",
+      "SR",
+      "SR LE",
+      "SR TRD",
+      "VVTI 2.7L STD",
+      "VVTI ELITE"
+    ],
+    "año_min": 2009,
+    "año_max": 2022,
+    "count": 18,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2700.0,
+      "potencia_hp": 166.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "TAILANDIA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "SAIL",
+    "versiones": [
+      "1.4L",
+      "1.4L 5P T/M A/A",
+      "1.4L STD",
+      "LS",
+      "LTZ",
+      "S3 LS"
+    ],
+    "año_min": 2012,
+    "año_max": 2020,
+    "count": 17,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1400.0,
+      "potencia_hp": 102.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "AVEO",
+    "versiones": [
+      "ACTIVO",
+      "EMOTION ADVANCE",
+      "EMOTION GLS",
+      "FAMILY 1.5L"
+    ],
+    "año_min": 2010,
+    "año_max": 2019,
+    "count": 15,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1500.0,
+      "potencia_hp": 103.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "FORD",
+    "modelo": "TERRITORY",
+    "versiones": [
+      "1.5 TURBO ECOBOOST",
+      "TITANIUM",
+      "TREND"
+    ],
+    "año_min": 2021,
+    "año_max": 2023,
+    "count": 13,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 143.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "GRAND I-10",
+    "versiones": [
+      "1.2L",
+      "FULL",
+      "GL",
+      "GLS",
+      "GRAND I-10 1.2L STD",
+      "GRAND I-10 FULL",
+      "STD"
+    ],
+    "año_min": 2018,
+    "año_max": 2024,
+    "count": 13,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1200.0,
+      "potencia_hp": 82.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "VERSA",
+    "versiones": [
+      "ADVANCE",
+      "CVTC 1.6L",
+      "SENSE",
+      "VERSA CVTC STD"
+    ],
+    "año_min": 2014,
+    "año_max": 2022,
+    "count": 13,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 118.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "MÉXICO"
+    }
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "DUSTER",
+    "versiones": [
+      "EXPRESSION",
+      "INTENS",
+      "INTENS 3G",
+      "INTENS ICONIC",
+      "ZEN EXPRESSION",
+      "ZEN PLUS"
+    ],
+    "año_min": 2013,
+    "año_max": 2025,
+    "count": 13,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 114.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "CHANGAN",
+    "modelo": "CS15",
+    "versiones": [
+      "CS15 GT FACE LIFT",
+      "ELITE FACE LIFT",
+      "GT",
+      "GT FACE LIFT"
+    ],
+    "año_min": 2019,
+    "año_max": 2026,
+    "count": 12,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 105.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHERY",
+    "modelo": "TIGGO7",
+    "versiones": [
+      "PRO COMFORT",
+      "PRO LUXURY",
+      "PRO MAX HYBRID COMFORT",
+      "PRO MHEV LUXURY"
+    ],
+    "año_min": 2022,
+    "año_max": 2025,
+    "count": 12,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 145.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "NEW D-MAX 9G",
+    "versiones": [
+      "HI-POWER",
+      "HI-POWER 9G",
+      "HI-POWER PREMIER",
+      "HI-RIDE",
+      "HI-RIDE 9G"
+    ],
+    "año_min": 2022,
+    "año_max": 2025,
+    "count": 12,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2500.0,
+      "potencia_hp": 134.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "TAILANDIA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "LAND CRUISER",
+    "versiones": [
+      "PRADO",
+      "PRADO SUMO GX",
+      "PRADO TX",
+      "PRADO VX LE",
+      "VX",
+      "VX L"
+    ],
+    "año_min": 1998,
+    "año_max": 2025,
+    "count": 12,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 4000.0,
+      "potencia_hp": 278.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "CHANGAN",
+    "modelo": "CS55",
+    "versiones": [
+      "CS55 PLUS 1.5 TURBO GDI",
+      "CS55 PLUS ELITE",
+      "LUXURY",
+      "PLUS LUXURY"
+    ],
+    "año_min": 2019,
+    "año_max": 2024,
+    "count": 11,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 154.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "NEW CAPTIVA",
+    "versiones": [
+      "LT",
+      "LTZ",
+      "LTZ 1.5 TURBO",
+      "PREMIER"
+    ],
+    "año_min": 2020,
+    "año_max": 2025,
+    "count": 11,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 147.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "301",
+    "versiones": [
+      "ACTIVE",
+      "ALLURE",
+      "FACE LIFT ACTIVE"
+    ],
+    "año_min": 2017,
+    "año_max": 2024,
+    "count": 11,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 115.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "ESPAÑA"
+    }
+  },
+  {
+    "marca": "SUZUKI",
+    "modelo": "VITARA",
+    "versiones": [
+      "GL+ VVT",
+      "GLX"
+    ],
+    "año_min": 2022,
+    "año_max": 2023,
+    "count": 11,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 115.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "CAPTIVA",
+    "versiones": [
+      "AWD 3.2L",
+      "SPORT",
+      "SPORT 2.4L"
+    ],
+    "año_min": 2013,
+    "año_max": 2017,
+    "count": 10,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2400.0,
+      "potencia_hp": 182.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "KICKS",
+    "versiones": [
+      "ADVANCE",
+      "DRIVE"
+    ],
+    "año_min": 2018,
+    "año_max": 2021,
+    "count": 10,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 118.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "SUZUKI",
+    "modelo": "NEW S-CROSS",
+    "versiones": [
+      "GL 1.4 TURBO BOOSTERJET",
+      "GLX",
+      "GLX 1.4 TURBO BOOSTERJET"
+    ],
+    "año_min": 2023,
+    "año_max": 2025,
+    "count": 10,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1400.0,
+      "potencia_hp": 138.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "SUZUKI",
+    "modelo": "S-CROSS",
+    "versiones": [
+      "S-CROSS CROSSOVER 1.6L",
+      "SX4 1.6L"
+    ],
+    "año_min": 2018,
+    "año_max": 2022,
+    "count": 10,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 120.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "CHANGAN",
+    "modelo": "ALSVIN V3",
+    "versiones": [
+      "BLUECORE BASIC",
+      "BLUECORE FULL"
+    ],
+    "año_min": 2020,
+    "año_max": 2026,
+    "count": 9,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1400.0,
+      "potencia_hp": 92.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CITROEN",
+    "modelo": "C ELYSEE",
+    "versiones": [
+      "FEEL VTI 115",
+      "SHINE",
+      "SHINE HDI",
+      "SHINE VTI 115",
+      "SHINE VTI 115 BVM"
+    ],
+    "año_min": 2019,
+    "año_max": 2023,
+    "count": 9,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 115.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "ESPAÑA"
+    }
+  },
+  {
+    "marca": "FORD",
+    "modelo": "ESCAPE",
+    "versiones": [
+      "S FACE LIFT XL",
+      "TREND",
+      "XL"
+    ],
+    "año_min": 2013,
+    "año_max": 2023,
+    "count": 9,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2500.0,
+      "potencia_hp": 168.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "ESTADOS UNIDOS"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "NEW RIO",
+    "versiones": [
+      "GT LINE",
+      "STD 1.4L",
+      "X LINE"
+    ],
+    "año_min": 2019,
+    "año_max": 2021,
+    "count": 9,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1400.0,
+      "potencia_hp": 100.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "SUZUKI",
+    "modelo": "FRONX",
+    "versiones": [
+      "GLX",
+      "RED LINE"
+    ],
+    "año_min": 2024,
+    "año_max": 2026,
+    "count": 9,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 102.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "INDIA"
+    }
+  },
+  {
+    "marca": "SUZUKI",
+    "modelo": "SWIFT",
+    "versiones": [
+      "4G SMART HYBRID",
+      "4G SMART HYBRID DUALJET",
+      "SMART HYBRID MGE",
+      "SWIFT 5G SMART HYBRID MGE"
+    ],
+    "año_min": 2024,
+    "año_max": 2025,
+    "count": 9,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1200.0,
+      "potencia_hp": 88.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "TRACKER",
+    "versiones": [
+      "LS",
+      "LS FACELIFT",
+      "LT",
+      "LT FACELIFT",
+      "PREMIER"
+    ],
+    "año_min": 2015,
+    "año_max": 2022,
+    "count": 8,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1800.0,
+      "potencia_hp": 130.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "FORD",
+    "modelo": "F150",
+    "versiones": [
+      "FX-4 LARIAT ECOBOOST BITURBO",
+      "XL",
+      "XLT",
+      "XLT POWERBOOST",
+      "XLT POWERBOOST BASE"
+    ],
+    "año_min": 2010,
+    "año_max": 2023,
+    "count": 8,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 3500.0,
+      "potencia_hp": 430.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ALTO",
+      "pais_origen": "USA"
+    }
+  },
+  {
+    "marca": "FORD",
+    "modelo": "RANGER",
+    "versiones": [
+      "XL",
+      "XL CREW CAB",
+      "XLS",
+      "XLS 2.5L"
+    ],
+    "año_min": 2004,
+    "año_max": 2023,
+    "count": 8,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2500.0,
+      "potencia_hp": 197.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "ARGENTINA"
+    }
+  },
+  {
+    "marca": "HAVAL",
+    "modelo": "H6",
+    "versiones": [
+      "SPORT CONFORT",
+      "SUPREME",
+      "SUPREME 2.0 TURBO",
+      "SUPREME HEV"
+    ],
+    "año_min": 2017,
+    "año_max": 2024,
+    "count": 8,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 187.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "CERATO",
+    "versiones": [
+      "FORTE CKD LX",
+      "GT LINE",
+      "KOUP DVVT",
+      "LX",
+      "X LINE"
+    ],
+    "año_min": 2009,
+    "año_max": 2020,
+    "count": 8,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 128.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "2",
+    "versiones": [
+      "2 SEDAN 1.5L",
+      "SKYACTIV CORE",
+      "SKYACTIV ENTRY"
+    ],
+    "año_min": 2012,
+    "año_max": 2023,
+    "count": 8,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1500.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "208",
+    "versiones": [
+      "ACTIVE",
+      "ACTIVE 1.2 TURBO",
+      "ACTIVE 1.2TURBO",
+      "ALLURE",
+      "ALLURE 1.2TURBO"
+    ],
+    "año_min": 2021,
+    "año_max": 2024,
+    "count": 8,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1200.0,
+      "potencia_hp": 130.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "YARIS CROSS",
+    "versiones": [
+      "AC 1.5",
+      "AC 1.5 5P 4X2 TA",
+      "HYBRID L TSS",
+      "HYBRID LE TSS"
+    ],
+    "año_min": 2022,
+    "año_max": 2025,
+    "count": 8,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 106.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "JETOUR",
+    "modelo": "X70",
+    "versiones": [
+      "COUPE BLACK II-DCT 1.6TURBO",
+      "PLUS LUXURY",
+      "WHITE I-MT 1.5TURBO",
+      "WHITE II-MT 1.5TURBO",
+      "X70 PLUS"
+    ],
+    "año_min": 2022,
+    "año_max": 2024,
+    "count": 7,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 150.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "CX-3",
+    "versiones": [
+      "GRAND TOURING",
+      "SPORT ENTRY",
+      "SPORT SKYACTIV",
+      "TOURING CORE"
+    ],
+    "año_min": 2018,
+    "año_max": 2025,
+    "count": 7,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 148.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "LOGAN",
+    "versiones": [
+      "EXPRESSION",
+      "INTENS CROSS",
+      "INTENSE DYNAMIQUE",
+      "ZEN",
+      "ZEN EXPRESSION"
+    ],
+    "año_min": 2012,
+    "año_max": 2024,
+    "count": 7,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 105.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "SHINERAY",
+    "modelo": "SWM",
+    "versiones": [
+      "G01 1.5 TURBO",
+      "G01 F 1.5 TURBO",
+      "G03F 1.5TURBO"
+    ],
+    "año_min": 2023,
+    "año_max": 2025,
+    "count": 7,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 147.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "POLO",
+    "versiones": [
+      "1.6L",
+      "COMFORTLINE",
+      "HIGHLINE",
+      "TRENDLINE"
+    ],
+    "año_min": 2005,
+    "año_max": 2021,
+    "count": 7,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1600.0,
+      "potencia_hp": 110.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "BEAT",
+    "versiones": [
+      "LS",
+      "PREMIER"
+    ],
+    "año_min": 2019,
+    "año_max": 2022,
+    "count": 6,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1200.0,
+      "potencia_hp": 80.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "ONIX",
+    "versiones": [
+      "LTZ TURBO",
+      "RS TURBO"
+    ],
+    "año_min": 2021,
+    "año_max": 2024,
+    "count": 6,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1000.0,
+      "potencia_hp": 114.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "VITARA",
+    "versiones": [
+      "1.6L",
+      "1.6L 4X4",
+      "1.6L SUV 4X4"
+    ],
+    "año_min": 2008,
+    "año_max": 2013,
+    "count": 6,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 94.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "SELTOS",
+    "versiones": [
+      "CKD D-CVVT 1.6L",
+      "D-CVVT 1.6L"
+    ],
+    "año_min": 2020,
+    "año_max": 2024,
+    "count": 6,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "NEW CX-5",
+    "versiones": [
+      "ACTIVE CORE",
+      "SPORT SKYACTIV",
+      "TOURING",
+      "TOURING SKYACTIV"
+    ],
+    "año_min": 2019,
+    "año_max": 2024,
+    "count": 6,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 155.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "4RUNNER",
+    "versiones": [
+      "4L",
+      "LIMITED",
+      "SR5"
+    ],
+    "año_min": 2004,
+    "año_max": 2015,
+    "count": 6,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 4000.0,
+      "potencia_hp": 270.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "HIGHLANDER",
+    "versiones": [
+      "HIGHLANDER HYBRID LIMITED",
+      "HYBRID BASIC",
+      "HYBRID LIMITED",
+      "HYBRID PREMIUM",
+      "LIMITED"
+    ],
+    "año_min": 2009,
+    "año_max": 2017,
+    "count": 6,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3300.0,
+      "potencia_hp": 270.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "CHERY",
+    "modelo": "TIGGO4",
+    "versiones": [
+      "BASIC",
+      "LUXURY",
+      "PRO MILD HYBRID CONFORT",
+      "PRO MILD HYBRID LUXURY"
+    ],
+    "año_min": 2019,
+    "año_max": 2025,
+    "count": 5,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 145.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHERY",
+    "modelo": "TIGGO8",
+    "versiones": [
+      "LUXURY",
+      "LUXURY 2.0TURBO",
+      "LUXURY 2.0TURBO ACTECO"
+    ],
+    "año_min": 2022,
+    "año_max": 2023,
+    "count": 5,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 170.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "D-MAX",
+    "versiones": [
+      "2.4L P/U C/S 4X2 STD",
+      "CRDI 3L D/C 4X4 FULL",
+      "CRDI 3L D/C STD",
+      "CRDI 3L P/U D/C 4X4 T/M FULL",
+      "HIGH COUNTRY"
+    ],
+    "año_min": 2015,
+    "año_max": 2018,
+    "count": 5,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 3000.0,
+      "potencia_hp": 163.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "TAILANDIA"
+    }
+  },
+  {
+    "marca": "D.F.S.K. (DONGFENG)",
+    "modelo": "GLORY",
+    "versiones": [
+      "560 DVVT 1.8L",
+      "580 DVVT 1.8L",
+      "GLORY 560 DVVT 1.8L"
+    ],
+    "año_min": 2021,
+    "año_max": 2026,
+    "count": 5,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1800.0,
+      "potencia_hp": 137.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "CRETA",
+    "versiones": [
+      "GL",
+      "GL LIMITED",
+      "GS 1.6L"
+    ],
+    "año_min": 2018,
+    "año_max": 2021,
+    "count": 5,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 123.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "SOLUTO",
+    "versiones": [
+      "XCITE CKD STD",
+      "XCITE STD"
+    ],
+    "año_min": 2021,
+    "año_max": 2024,
+    "count": 5,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1400.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "STONIC",
+    "versiones": [
+      "EUROPA ECO-HYBRID 1.0T",
+      "EUROPA ECO-HYBRID 1.0TURBO"
+    ],
+    "año_min": 2021,
+    "año_max": 2023,
+    "count": 5,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1000.0,
+      "potencia_hp": 118.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "MITSUBISHI",
+    "modelo": "MONTERO",
+    "versiones": [
+      "3.2L DID",
+      "GLS",
+      "SPORT GLS"
+    ],
+    "año_min": 2008,
+    "año_max": 2024,
+    "count": 5,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2400.0,
+      "potencia_hp": 165.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "TIIDA",
+    "versiones": [
+      "VTC 1.6L"
+    ],
+    "año_min": 2012,
+    "año_max": 2015,
+    "count": 5,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 110.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "2008",
+    "versiones": [
+      "ALLURE",
+      "ALLURE GRIP CONTROL"
+    ],
+    "año_min": 2019,
+    "año_max": 2020,
+    "count": 5,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 110.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "SANDERO",
+    "versiones": [
+      "DYNAMIQUE",
+      "GT LINE",
+      "ZEN INTENS"
+    ],
+    "año_min": 2011,
+    "año_max": 2023,
+    "count": 5,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1600.0,
+      "potencia_hp": 111.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "STEPWAY",
+    "versiones": [
+      "STEPWAY 3G INTENS"
+    ],
+    "año_min": 2022,
+    "año_max": 2023,
+    "count": 5,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1600.0,
+      "potencia_hp": 111.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "GOL",
+    "versiones": [
+      "CONFORT",
+      "GOL VI PLUS ESTILO",
+      "POWER 1.6L",
+      "SPECIAL"
+    ],
+    "año_min": 2006,
+    "año_max": 2014,
+    "count": 5,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1600.0,
+      "potencia_hp": 101.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "CHERY",
+    "modelo": "TIGGO2",
+    "versiones": [
+      "COMFORT",
+      "LUXURY"
+    ],
+    "año_min": 2020,
+    "año_max": 2023,
+    "count": 4,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 105.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "FORD",
+    "modelo": "EXPLORER",
+    "versiones": [
+      "XLT"
+    ],
+    "año_min": 2013,
+    "año_max": 2016,
+    "count": 4,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3500.0,
+      "potencia_hp": 290.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "USA"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "H6",
+    "versiones": [
+      "1.5 TURBO"
+    ],
+    "año_min": 2019,
+    "año_max": 2023,
+    "count": 4,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 150.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "I-10",
+    "versiones": [
+      "FACE LIFT STD",
+      "GRAND I-10 1.2L"
+    ],
+    "año_min": 2011,
+    "año_max": 2015,
+    "count": 4,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1100.0,
+      "potencia_hp": 67.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "INDIA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "CARNIVAL R",
+    "versiones": [
+      "GRAND CARNIVAL R",
+      "GRAND CARNIVAL R 3.3L FULL",
+      "GRAND CARNIVAL R 3.3L VAN 8PX K-TRONIC FULL"
+    ],
+    "año_min": 2019,
+    "año_max": 2019,
+    "count": 4,
+    "specs": {
+      "carroceria": "VAN",
+      "motor_cc": 3300.0,
+      "potencia_hp": 270.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "SOUEAST",
+    "modelo": "DX3",
+    "versiones": [
+      "CONFORT"
+    ],
+    "año_min": 2019,
+    "año_max": 2022,
+    "count": 4,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 118.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "T-CROSS",
+    "versiones": [
+      "COMFORTLINE",
+      "HIGHLINE",
+      "TRENDLINE"
+    ],
+    "año_min": 2020,
+    "año_max": 2024,
+    "count": 4,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 110.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "BMW",
+    "modelo": "X5",
+    "versiones": [
+      "XDRIVE 35I TWIN POWER TURBO",
+      "XDRIVE 40I TWIN POWER TURBO HEV"
+    ],
+    "año_min": 2013,
+    "año_max": 2024,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3000.0,
+      "potencia_hp": 306.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "LUJO",
+      "pais_origen": "ALEMANIA"
+    }
+  },
+  {
+    "marca": "CHERY",
+    "modelo": "ARRIZO5",
+    "versiones": [
+      "PRO COMFORT",
+      "PRO LUXURY"
+    ],
+    "año_min": 2024,
+    "año_max": 2026,
+    "count": 3,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1500.0,
+      "potencia_hp": 114.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "GROOVE",
+    "versiones": [
+      "LTZ",
+      "VVT LTZ"
+    ],
+    "año_min": 2023,
+    "año_max": 2025,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 110.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "JOY",
+    "versiones": [
+      "JOY BLACK"
+    ],
+    "año_min": 2022,
+    "año_max": 2024,
+    "count": 3,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1400.0,
+      "potencia_hp": 97.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "LUV",
+    "versiones": [
+      "LUV 2.2L P/U C/S 4X2 T/M STD",
+      "OPTIMA"
+    ],
+    "año_min": 1999,
+    "año_max": 2012,
+    "count": 3,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2200.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "ECUADOR"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "NEW TRAIL BLAZER",
+    "versiones": [
+      "DURAMAX 2.8 TURBO CRDI"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2800.0,
+      "potencia_hp": 197.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "TRAIL BLAZER",
+    "versiones": [
+      "CRDI 2.8L",
+      "CRDI 2.8L 4X4"
+    ],
+    "año_min": 2017,
+    "año_max": 2020,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2800.0,
+      "potencia_hp": 200.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "CITROEN",
+    "modelo": "C3 AIRCROSS",
+    "versiones": [
+      "HDI 1.6 TURBO DIESEL",
+      "THP 1.2 TURBO"
+    ],
+    "año_min": 2018,
+    "año_max": 2019,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1200.0,
+      "potencia_hp": 110.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "ESPAÑA"
+    }
+  },
+  {
+    "marca": "CITROEN",
+    "modelo": "C5",
+    "versiones": [
+      "AIRCROSS GRIP CONTROL",
+      "AIRCROSS LIVE",
+      "C5 AIRCROSS FEEL"
+    ],
+    "año_min": 2020,
+    "año_max": 2022,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 180.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "500",
+    "versiones": [
+      "LOUNGE",
+      "LOUNGE CABRIOLET"
+    ],
+    "año_min": 2020,
+    "año_max": 2020,
+    "count": 3,
+    "specs": {
+      "carroceria": "CONVERTIBLE",
+      "motor_cc": 1400.0,
+      "potencia_hp": 100.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "MÉXICO"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "H3",
+    "versiones": [
+      "H3"
+    ],
+    "año_min": 2018,
+    "año_max": 2019,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "NEW SANTA FE",
+    "versiones": [
+      "3G 2.4L",
+      "4G 2.4L",
+      "4G 2.4L FULL"
+    ],
+    "año_min": 2018,
+    "año_max": 2020,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2400.0,
+      "potencia_hp": 188.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "JAC MOTORS",
+    "modelo": "T8 PRO",
+    "versiones": [
+      "PRO LUXURY",
+      "T8 PRO"
+    ],
+    "año_min": 2021,
+    "año_max": 2022,
+    "count": 3,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2000.0,
+      "potencia_hp": 137.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "JEEP",
+    "modelo": "COMPASS",
+    "versiones": [
+      "COMPASS SPORT",
+      "LONGITUDE",
+      "SPORT"
+    ],
+    "año_min": 2013,
+    "año_max": 2019,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2400.0,
+      "potencia_hp": 180.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "JEEP",
+    "modelo": "GRAND CHEROKEE",
+    "versiones": [
+      "LAREDO"
+    ],
+    "año_min": 2017,
+    "año_max": 2019,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3600.0,
+      "potencia_hp": 295.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "USA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "ALL NEW CARENS",
+    "versiones": [
+      "ALL NEW CARENS DUAL CVVT 1.5L"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 120.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "NIRO",
+    "versiones": [
+      "HYBRID D-CVVT 1.6L"
+    ],
+    "año_min": 2019,
+    "año_max": 2019,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 141.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "OPTIMA",
+    "versiones": [
+      "OPTIMA R HYBRID FACE LIFT",
+      "R HYBRID",
+      "R HYBRID FACE LIFT"
+    ],
+    "año_min": 2015,
+    "año_max": 2019,
+    "count": 3,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 2000.0,
+      "potencia_hp": 200.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "RIO",
+    "versiones": [
+      "R EX",
+      "STYLUS LS",
+      "XCITE EX"
+    ],
+    "año_min": 2007,
+    "año_max": 2013,
+    "count": 3,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1400.0,
+      "potencia_hp": 97.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "6",
+    "versiones": [
+      "2.0L",
+      "SKYACTIV CORE IPM"
+    ],
+    "año_min": 2008,
+    "año_max": 2018,
+    "count": 3,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 2000.0,
+      "potencia_hp": 155.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "NEW BT-50",
+    "versiones": [
+      "FULL 3.2L CRDI",
+      "MID"
+    ],
+    "año_min": 2020,
+    "año_max": 2021,
+    "count": 3,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 3200.0,
+      "potencia_hp": 197.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "TAILANDIA"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "FRONTIER",
+    "versiones": [
+      "XE",
+      "XTREM"
+    ],
+    "año_min": 2019,
+    "año_max": 2022,
+    "count": 3,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2500.0,
+      "potencia_hp": 152.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "TAILANDIA"
+    }
+  },
+  {
+    "marca": "OPEL",
+    "modelo": "CORSA",
+    "versiones": [
+      "EDITION 1.2 TURBO",
+      "EDITION 1.2TURBO",
+      "ELEGANCE 1.2 TURBO"
+    ],
+    "año_min": 2023,
+    "año_max": 2024,
+    "count": 3,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1200.0,
+      "potencia_hp": 130.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "ALEMANIA"
+    }
+  },
+  {
+    "marca": "SHINERAY",
+    "modelo": "X30L",
+    "versiones": [
+      "X30L 1.5L VAN 11PX"
+    ],
+    "año_min": 2019,
+    "año_max": 2023,
+    "count": 3,
+    "specs": {
+      "carroceria": "VAN",
+      "motor_cc": 1500.0,
+      "potencia_hp": 107.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "AGYA",
+    "versiones": [
+      "AC 1.2L",
+      "DUAL VVT-I 1.2L T/M",
+      "L DUAL VVT-I"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 3,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1200.0,
+      "potencia_hp": 85.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "INDONESIA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "C-HR",
+    "versiones": [
+      "ACTIVE HYBRID",
+      "L ACTIVE HYBRID"
+    ],
+    "año_min": 2021,
+    "año_max": 2024,
+    "count": 3,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1800.0,
+      "potencia_hp": 122.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "INNOVA7",
+    "versiones": [
+      "2.7 VVTI"
+    ],
+    "año_min": 2015,
+    "año_max": 2015,
+    "count": 3,
+    "specs": {
+      "carroceria": "VAN",
+      "motor_cc": 2700.0,
+      "potencia_hp": 166.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "INDONESIA"
+    }
+  },
+  {
+    "marca": "AUDI",
+    "modelo": "Q5",
+    "versiones": [
+      "2.0 TFSI BASE QUATTRO",
+      "2.0 TFSI QUATTRO"
+    ],
+    "año_min": 2012,
+    "año_max": 2015,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 225.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ALTO",
+      "pais_origen": "ALEMANIA"
+    }
+  },
+  {
+    "marca": "BAIC",
+    "modelo": "X55 IMPERIUM",
+    "versiones": [
+      "ELITE",
+      "LUXURY"
+    ],
+    "año_min": 2020,
+    "año_max": 2020,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 148.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHANGAN",
+    "modelo": "CS35",
+    "versiones": [
+      "CS35 PLUS 1.6L BLUE CORE",
+      "DCT PLUS 1.4TURBO"
+    ],
+    "año_min": 2023,
+    "año_max": 2024,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1400.0,
+      "potencia_hp": 126.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHANGAN",
+    "modelo": "HUNTER",
+    "versiones": [
+      "2.4 TURBO"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 2,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2400.0,
+      "potencia_hp": 204.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHANGAN",
+    "modelo": "UNI-T",
+    "versiones": [
+      "GT BLUE CORE GDI 1.5 TURBO"
+    ],
+    "año_min": 2023,
+    "año_max": 2024,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 180.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "CRUZE",
+    "versiones": [
+      "1.8L",
+      "LTZ"
+    ],
+    "año_min": 2014,
+    "año_max": 2018,
+    "count": 2,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1400.0,
+      "potencia_hp": 141.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "MONTANA",
+    "versiones": [
+      "PREMIER 1.2 TURBO",
+      "PREMIER 1.2TURBO"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 2,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 1200.0,
+      "potencia_hp": 130.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "OPTRA",
+    "versiones": [
+      "DESIGN 1.8L",
+      "LIMITED"
+    ],
+    "año_min": 2006,
+    "año_max": 2008,
+    "count": 2,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1800.0,
+      "potencia_hp": 121.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "RODEO",
+    "versiones": [
+      "V6 3.2L"
+    ],
+    "año_min": 2004,
+    "año_max": 2004,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3200.0,
+      "potencia_hp": 193.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "CITROEN",
+    "modelo": "C3",
+    "versiones": [
+      "PLATINUM THP"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 2,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1200.0,
+      "potencia_hp": 110.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "ESLOVAQUIA"
+    }
+  },
+  {
+    "marca": "D.F.S.K. (DONGFENG)",
+    "modelo": "E5",
+    "versiones": [
+      "LUXURY PHEV"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 175.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "ARGO",
+    "versiones": [
+      "TREKKING",
+      "TREKKING 1.3L FIREFLY"
+    ],
+    "año_min": 2022,
+    "año_max": 2022,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1300.0,
+      "potencia_hp": 100.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "FORD",
+    "modelo": "EXPEDITION",
+    "versiones": [
+      "EDDIE BAUER",
+      "XLT"
+    ],
+    "año_min": 2009,
+    "año_max": 2012,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 5400.0,
+      "potencia_hp": 310.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ALTO",
+      "pais_origen": "USA"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "H5",
+    "versiones": [
+      "H5 TURBO",
+      "TURBO"
+    ],
+    "año_min": 2018,
+    "año_max": 2019,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 174.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "HONDA",
+    "modelo": "CR-V",
+    "versiones": [
+      "EX"
+    ],
+    "año_min": 2008,
+    "año_max": 2024,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 166.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "HONDA",
+    "modelo": "WR-V",
+    "versiones": [
+      "LX"
+    ],
+    "año_min": 2019,
+    "año_max": 2021,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 120.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "IONIQ",
+    "versiones": [
+      "HYBRID 1.6L"
+    ],
+    "año_min": 2018,
+    "año_max": 2018,
+    "count": 2,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1600.0,
+      "potencia_hp": 141.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "NEW GRAND I-10",
+    "versiones": [
+      "GL 1.2L"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 2,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1200.0,
+      "potencia_hp": 82.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "JAC AUTOS",
+    "modelo": "JS4",
+    "versiones": [
+      "JS4 DVVT 1.6L"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 118.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "JAC MOTORS",
+    "modelo": "T6",
+    "versiones": [
+      "T6 VVT 2.0 TURBO"
+    ],
+    "año_min": 2022,
+    "año_max": 2022,
+    "count": 2,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2000.0,
+      "potencia_hp": 190.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "JMC",
+    "modelo": "VIGUS",
+    "versiones": [
+      "VIGUS FORD PUMA TDCI 2.4L",
+      "WORK"
+    ],
+    "año_min": 2019,
+    "año_max": 2025,
+    "count": 2,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2400.0,
+      "potencia_hp": 130.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "SONET",
+    "versiones": [
+      "X-LINE"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 113.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "SPORTAGE D-CVVT",
+    "versiones": [
+      "GT LINE",
+      "X LINE"
+    ],
+    "año_min": 2023,
+    "año_max": 2024,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 154.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "3",
+    "versiones": [
+      "ACTIVEMATIC"
+    ],
+    "año_min": 2009,
+    "año_max": 2009,
+    "count": 2,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 105.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "BT-50",
+    "versiones": [
+      "ACTION"
+    ],
+    "año_min": 2015,
+    "año_max": 2015,
+    "count": 2,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2500.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "TAILANDIA"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "CX-30",
+    "versiones": [
+      "CORE E SKYACTIV G MEV",
+      "CORE EDICION 100 AÑOS"
+    ],
+    "año_min": 2022,
+    "año_max": 2024,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 153.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "CX-5",
+    "versiones": [
+      "GT CORE",
+      "SKYACTIV"
+    ],
+    "año_min": 2013,
+    "año_max": 2018,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 155.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "CX-90",
+    "versiones": [
+      "HIGH"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3300.0,
+      "potencia_hp": 280.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "LUJO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "MITSUBISHI",
+    "modelo": "ASX",
+    "versiones": [
+      "ASX 2L 4X2"
+    ],
+    "año_min": 2011,
+    "año_max": 2011,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 150.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "MITSUBISHI",
+    "modelo": "OUTLANDER",
+    "versiones": [
+      "2.4L SUV 4X4 FULL",
+      "SPORT"
+    ],
+    "año_min": 2009,
+    "año_max": 2015,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 148.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "NOTE",
+    "versiones": [
+      "SENSE"
+    ],
+    "año_min": 2014,
+    "año_max": 2014,
+    "count": 2,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1600.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "SENTRA",
+    "versiones": [
+      "B13 1.6L",
+      "B13 STD"
+    ],
+    "año_min": 2009,
+    "año_max": 2010,
+    "count": 2,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 110.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "MEXICO"
+    }
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "5008",
+    "versiones": [
+      "ALLURE GRIP CONTROL",
+      "GT LINE"
+    ],
+    "año_min": 2020,
+    "año_max": 2020,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 150.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "CAPTUR",
+    "versiones": [
+      "INTENS BITONO",
+      "ZEN 2.0"
+    ],
+    "año_min": 2020,
+    "año_max": 2022,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 143.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "SOUEAST",
+    "modelo": "A5",
+    "versiones": [
+      "A5 1.5L"
+    ],
+    "año_min": 2022,
+    "año_max": 2023,
+    "count": 2,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1500.0,
+      "potencia_hp": 118.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "SUZUKI",
+    "modelo": "JIMNY",
+    "versiones": [
+      "GL 1.5L"
+    ],
+    "año_min": 2023,
+    "año_max": 2026,
+    "count": 2,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "SAVEIRO",
+    "versiones": [
+      "COMFORTLINE",
+      "TRENDLINE"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 2,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 1600.0,
+      "potencia_hp": 110.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "VIRTUS",
+    "versiones": [
+      "TRENDLINE"
+    ],
+    "año_min": 2019,
+    "año_max": 2022,
+    "count": 2,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 110.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "AUDI",
+    "modelo": "A1",
+    "versiones": [
+      "1.4 TFSI S-TRONIC"
+    ],
+    "año_min": 2012,
+    "año_max": 2012,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1400.0,
+      "potencia_hp": 125.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "ALEMANIA"
+    }
+  },
+  {
+    "marca": "BAIC",
+    "modelo": "D50",
+    "versiones": [
+      "D50 1.5L"
+    ],
+    "año_min": 2021,
+    "año_max": 2021,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1500.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "BAIC",
+    "modelo": "NEW X35 SENOVA",
+    "versiones": [
+      "ELITE"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 114.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "BMW",
+    "modelo": "X1",
+    "versiones": [
+      "SDRIVE 18I"
+    ],
+    "año_min": 2022,
+    "año_max": 2022,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 140.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ALTO",
+      "pais_origen": "ALEMANIA"
+    }
+  },
+  {
+    "marca": "BYD",
+    "modelo": "SEAGULL",
+    "versiones": [
+      "SEAGULL EV 300"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "potencia_hp": 74.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "ELÉCTRICO",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "BYD",
+    "modelo": "YUAN",
+    "versiones": [
+      "PRO EV"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "potencia_hp": 174.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "ELÉCTRICO",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHANGAN",
+    "modelo": "NEW HUNTER",
+    "versiones": [
+      "NEW HUNTER DIESEL 1.9 TURBO 4X4"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 1900.0,
+      "potencia_hp": 150.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHANGAN",
+    "modelo": "X7",
+    "versiones": [
+      "ELITE"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 168.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHERY",
+    "modelo": "NEW TIGGO3",
+    "versiones": [
+      "COMFORT"
+    ],
+    "año_min": 2019,
+    "año_max": 2019,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 125.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHERY",
+    "modelo": "TIGGO",
+    "versiones": [
+      "TIGGO3 WHITE"
+    ],
+    "año_min": 2017,
+    "año_max": 2017,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHERY",
+    "modelo": "TIGGO2 PRO",
+    "versiones": [
+      "COMFORT"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 103.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "CAVALIER",
+    "versiones": [
+      "LT SPORT"
+    ],
+    "año_min": 2018,
+    "año_max": 2018,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1500.0,
+      "potencia_hp": 109.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "MÉXICO"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "COLORADO",
+    "versiones": [
+      "HIGH COUNTRY"
+    ],
+    "año_min": 2022,
+    "año_max": 2022,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2800.0,
+      "potencia_hp": 197.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "ALTO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "JIMNY",
+    "versiones": [],
+    "año_min": 2005,
+    "año_max": 2005,
+    "count": 1,
+    "specs": {}
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "N300",
+    "versiones": [
+      "MOVE 1.2L VAN 7PX"
+    ],
+    "año_min": 2015,
+    "año_max": 2015,
+    "count": 1,
+    "specs": {
+      "carroceria": "VAN",
+      "motor_cc": 1200.0,
+      "potencia_hp": 81.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "TAHOE",
+    "versiones": [
+      "LT"
+    ],
+    "año_min": 2020,
+    "año_max": 2020,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 5300.0,
+      "potencia_hp": 355.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "LUJO",
+      "pais_origen": "ESTADOS UNIDOS"
+    }
+  },
+  {
+    "marca": "CHEVROLET",
+    "modelo": "TROOPER",
+    "versiones": [
+      "TROOPER WAGON 3.2L"
+    ],
+    "año_min": 2000,
+    "año_max": 2000,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3200.0,
+      "potencia_hp": 190.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "CITROEN",
+    "modelo": "BERLINGO",
+    "versiones": [],
+    "año_min": 2022,
+    "año_max": 2022,
+    "count": 1,
+    "specs": {}
+  },
+  {
+    "marca": "CITROEN",
+    "modelo": "JUMPY",
+    "versiones": [
+      "2.0 HDI TURBO FURGO CARGA"
+    ],
+    "año_min": 2019,
+    "año_max": 2019,
+    "count": 1,
+    "specs": {
+      "carroceria": "VAN",
+      "motor_cc": 2000.0,
+      "potencia_hp": 150.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "CITROEN",
+    "modelo": "NEW C4",
+    "versiones": [
+      "EXCLUSIVE"
+    ],
+    "año_min": 2017,
+    "año_max": 2017,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1600.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "D.F.S.K. (DONGFENG)",
+    "modelo": "K01",
+    "versiones": [
+      "K01 DK-12 125L"
+    ],
+    "año_min": 2020,
+    "año_max": 2020,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 1250.0,
+      "potencia_hp": 87.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "DAIHATSU",
+    "modelo": "TERIOS",
+    "versiones": [
+      "SZ3 DVVT"
+    ],
+    "año_min": 2008,
+    "año_max": 2008,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 105.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "DODGE",
+    "modelo": "JOURNEY",
+    "versiones": [
+      "EXPRESS SE"
+    ],
+    "año_min": 2014,
+    "año_max": 2014,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2400.0,
+      "potencia_hp": 173.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "MÉXICO"
+    }
+  },
+  {
+    "marca": "DONGFENG",
+    "modelo": "AX7",
+    "versiones": [
+      "LUXURY"
+    ],
+    "año_min": 2020,
+    "año_max": 2020,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 145.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "DONGFENG",
+    "modelo": "SX5",
+    "versiones": [
+      "SX5 2L"
+    ],
+    "año_min": 2022,
+    "año_max": 2022,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 145.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "FAW",
+    "modelo": "T33",
+    "versiones": [
+      "LUXURY"
+    ],
+    "año_min": 2022,
+    "año_max": 2022,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "500X",
+    "versiones": [
+      "TREKKING"
+    ],
+    "año_min": 2018,
+    "año_max": 2018,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1400.0,
+      "potencia_hp": 170.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "ITALIA"
+    }
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "FULLBACK",
+    "versiones": [
+      "GLX"
+    ],
+    "año_min": 2017,
+    "año_max": 2017,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2500.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "TAILANDIA"
+    }
+  },
+  {
+    "marca": "FIAT",
+    "modelo": "PULSE",
+    "versiones": [
+      "ESSENZA"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1300.0,
+      "potencia_hp": 99.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "FORD",
+    "modelo": "FOCUS",
+    "versiones": [],
+    "año_min": 2013,
+    "año_max": 2013,
+    "count": 1,
+    "specs": {}
+  },
+  {
+    "marca": "FORD",
+    "modelo": "NEW EXPLORER",
+    "versiones": [
+      "XLT"
+    ],
+    "año_min": 2019,
+    "año_max": 2019,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3500.0,
+      "potencia_hp": 290.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "USA"
+    }
+  },
+  {
+    "marca": "FOTON",
+    "modelo": "TUNLAND",
+    "versiones": [
+      "G7 2.0 TURBO CRDI"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2000.0,
+      "potencia_hp": 160.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "GAC MOTOR",
+    "modelo": "GS4",
+    "versiones": [
+      "GE 1.5TURBO"
+    ],
+    "año_min": 2020,
+    "año_max": 2020,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 150.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "GEELY",
+    "modelo": "AZKARRA",
+    "versiones": [
+      "HEV LUXURY"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 187.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "HAVAL M4",
+    "versiones": [
+      "1.5L"
+    ],
+    "año_min": 2018,
+    "año_max": 2018,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "M4",
+    "versiones": [
+      "LUXURY"
+    ],
+    "año_min": 2015,
+    "año_max": 2015,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1500.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "POER",
+    "versiones": [
+      "2.0 TURBO DIESEL VVT DUAL"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2000.0,
+      "potencia_hp": 161.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "VOLEEX",
+    "versiones": [
+      "C30 LUXURY"
+    ],
+    "año_min": 2015,
+    "año_max": 2015,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1500.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "WINGLE",
+    "versiones": [
+      "WINGLE3 2.8L CRDI"
+    ],
+    "año_min": 2012,
+    "año_max": 2012,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2800.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "WINGLE STEEED",
+    "versiones": [
+      "STEED 2.4L MITSUBISHI"
+    ],
+    "año_min": 2021,
+    "año_max": 2021,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2400.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "WINGLE5",
+    "versiones": [
+      "2.8L CRDI P/U D/C 4X2 T/M A/A FULL"
+    ],
+    "año_min": 2015,
+    "año_max": 2015,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2800.0,
+      "potencia_hp": 116.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "GREAT WALL",
+    "modelo": "WINGLE7",
+    "versiones": [],
+    "año_min": 2022,
+    "año_max": 2022,
+    "count": 1,
+    "specs": {}
+  },
+  {
+    "marca": "HAVAL",
+    "modelo": "ALL NEW H2 HIBRIDO",
+    "versiones": [
+      "LUXURY"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "HAVAL",
+    "modelo": "H2",
+    "versiones": [
+      "1.5 TURBO"
+    ],
+    "año_min": 2018,
+    "año_max": 2018,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 150.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "HAVAL",
+    "modelo": "NEW H2",
+    "versiones": [
+      "1.5 TURBO"
+    ],
+    "año_min": 2022,
+    "año_max": 2022,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 141.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "HONDA",
+    "modelo": "CIVIC",
+    "versiones": [
+      "EX"
+    ],
+    "año_min": 2012,
+    "año_max": 2012,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1800.0,
+      "potencia_hp": 140.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "ACCENT",
+    "versiones": [
+      "CVVT GL"
+    ],
+    "año_min": 2007,
+    "año_max": 2007,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 112.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "ALL NEW CRETA",
+    "versiones": [
+      "GL"
+    ],
+    "año_min": 2026,
+    "año_max": 2026,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 114.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "ALL NEW SONATA",
+    "versiones": [
+      "GLS"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 2000.0,
+      "potencia_hp": 192.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "GETZ",
+    "versiones": [
+      "GL 1.6L"
+    ],
+    "año_min": 2011,
+    "año_max": 2011,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1600.0,
+      "potencia_hp": 105.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "H1",
+    "versiones": [
+      "H1 TQ 2.5L CRDI VAN 12PX"
+    ],
+    "año_min": 2011,
+    "año_max": 2011,
+    "count": 1,
+    "specs": {
+      "carroceria": "VAN",
+      "motor_cc": 2500.0,
+      "potencia_hp": 170.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "NEW ACCENT",
+    "versiones": [
+      "1.4L"
+    ],
+    "año_min": 2012,
+    "año_max": 2012,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1400.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "NEW ELANTRA",
+    "versiones": [
+      "1.6L"
+    ],
+    "año_min": 2012,
+    "año_max": 2012,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "NEW SONATA",
+    "versiones": [
+      "2L"
+    ],
+    "año_min": 2014,
+    "año_max": 2014,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 2000.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "NUEVO TUCSON FL",
+    "versiones": [
+      "GL SMARTSTREAM G2.0"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 154.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "SANTA FE",
+    "versiones": [],
+    "año_min": 2011,
+    "año_max": 2011,
+    "count": 1,
+    "specs": {}
+  },
+  {
+    "marca": "HYUNDAI",
+    "modelo": "VERACRUZ",
+    "versiones": [
+      "GL"
+    ],
+    "año_min": 2011,
+    "año_max": 2011,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3800.0,
+      "potencia_hp": 255.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "JAC AUTOS",
+    "modelo": "S3",
+    "versiones": [
+      "S3 PLUS 3G"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 118.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "JAC AUTOS",
+    "modelo": "S5",
+    "versiones": [
+      "S5 2.0T"
+    ],
+    "año_min": 2019,
+    "año_max": 2019,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 174.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "JAC MOTORS",
+    "modelo": "T8",
+    "versiones": [
+      "PRO LUXURY"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2000.0,
+      "potencia_hp": 137.0,
+      "transmision": "MANUAL",
+      "traccion": "4X4",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "JEEP",
+    "modelo": "ALL NEWCOMPASS 2G",
+    "versiones": [
+      "LIMITED 2G"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1300.0,
+      "potencia_hp": 170.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "JEEP",
+    "modelo": "PATRIOT",
+    "versiones": [
+      "SPORT"
+    ],
+    "año_min": 2010,
+    "año_max": 2010,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2400.0,
+      "potencia_hp": 172.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "ESTADOS UNIDOS"
+    }
+  },
+  {
+    "marca": "JETOUR",
+    "modelo": "DASHING",
+    "versiones": [
+      "MT-II 1.5TURBO"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 160.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "ALL NEW CERATO",
+    "versiones": [
+      "DUAL CVVT 1.6L"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 128.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "K3",
+    "versiones": [
+      "LX"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1400.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "NEW SELTOS",
+    "versiones": [
+      "X-LINE"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 114.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "SORENTO",
+    "versiones": [
+      "GT-LINE"
+    ],
+    "año_min": 2017,
+    "año_max": 2017,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3300.0,
+      "potencia_hp": 270.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KIA",
+    "modelo": "SPECTRA",
+    "versiones": [
+      "LS"
+    ],
+    "año_min": 2004,
+    "año_max": 2004,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 105.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "KYC",
+    "modelo": "F3",
+    "versiones": [
+      "F3 1.6L"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 1600.0,
+      "potencia_hp": 121.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "LEXUS",
+    "modelo": "RX",
+    "versiones": [
+      "RX 450H"
+    ],
+    "año_min": 2010,
+    "año_max": 2010,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3500.0,
+      "potencia_hp": 295.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "LUJO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "LIVAN",
+    "modelo": "X30",
+    "versiones": [
+      "PRO CVT"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 113.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "MAZDA",
+    "modelo": "CX-60",
+    "versiones": [
+      "SKYACTIV-G DRIVE AWD SIGNATURE LINE"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2500.0,
+      "potencia_hp": 190.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "AWD",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "LUJO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "MERCEDES BENZ",
+    "modelo": "E",
+    "versiones": [
+      "E 350"
+    ],
+    "año_min": 2019,
+    "año_max": 2019,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 2000.0,
+      "potencia_hp": 291.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "LUJO",
+      "pais_origen": "ALEMANIA"
+    }
+  },
+  {
+    "marca": "MG MOTOR",
+    "modelo": "RX5",
+    "versiones": [
+      "GDEL 1.5TURBO"
+    ],
+    "año_min": 2022,
+    "año_max": 2022,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 168.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "MINI",
+    "modelo": "COOPER",
+    "versiones": [
+      "COOPER TWIN POWER TURBO"
+    ],
+    "año_min": 2018,
+    "año_max": 2018,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1500.0,
+      "potencia_hp": 136.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "REINO UNIDO"
+    }
+  },
+  {
+    "marca": "MITSUBISHI",
+    "modelo": "ECLIPSE CROSS",
+    "versiones": [
+      "GL"
+    ],
+    "año_min": 2020,
+    "año_max": 2020,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 147.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "MITSUBISHI",
+    "modelo": "TRITON",
+    "versiones": [
+      "SPORT"
+    ],
+    "año_min": 2026,
+    "año_max": 2026,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2400.0,
+      "potencia_hp": 150.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "TAILANDIA"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "ALTIMA",
+    "versiones": [
+      "EXCLUSIVE GLS VC-TURBO"
+    ],
+    "año_min": 2019,
+    "año_max": 2019,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 2000.0,
+      "potencia_hp": 248.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "MARCH",
+    "versiones": [
+      "SENSE"
+    ],
+    "año_min": 2013,
+    "año_max": 2013,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1600.0,
+      "potencia_hp": 106.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "MÉXICO"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "MURANO",
+    "versiones": [
+      "SL"
+    ],
+    "año_min": 2007,
+    "año_max": 2007,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 3500.0,
+      "potencia_hp": 245.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "NISSAN",
+    "modelo": "PATROL",
+    "versiones": [
+      "GRX LIMITED"
+    ],
+    "año_min": 2006,
+    "año_max": 2006,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 4800.0,
+      "potencia_hp": 245.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "OPEL",
+    "modelo": "GRANDLAND",
+    "versiones": [
+      "GS 1.6TURBO BITONO"
+    ],
+    "año_min": 2024,
+    "año_max": 2024,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1600.0,
+      "potencia_hp": 163.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "ALEMANIA"
+    }
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "207",
+    "versiones": [
+      "COMPACT ONELINE"
+    ],
+    "año_min": 2013,
+    "año_max": 2013,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1400.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "307",
+    "versiones": [
+      "XT"
+    ],
+    "año_min": 2004,
+    "año_max": 2004,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 2000.0,
+      "potencia_hp": 137.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "408",
+    "versiones": [
+      "ALLURE PACK"
+    ],
+    "año_min": 2013,
+    "año_max": 2013,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 2000.0,
+      "potencia_hp": 143.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "ARGENTINA"
+    }
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "508",
+    "versiones": [],
+    "año_min": 2016,
+    "año_max": 2016,
+    "count": 1,
+    "specs": {}
+  },
+  {
+    "marca": "PEUGEOT",
+    "modelo": "607",
+    "versiones": [
+      "IVOIRE PACK"
+    ],
+    "año_min": 2002,
+    "año_max": 2002,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 3000.0,
+      "potencia_hp": 210.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ALTO",
+      "pais_origen": "FRANCIA"
+    }
+  },
+  {
+    "marca": "RAM",
+    "modelo": "700",
+    "versiones": [
+      "SLT"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 1400.0,
+      "potencia_hp": 86.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "RENAULT",
+    "modelo": "KOLEOS",
+    "versiones": [
+      "ZEN 2.5L"
+    ],
+    "año_min": 2020,
+    "año_max": 2020,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2500.0,
+      "potencia_hp": 170.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "SINOTRUK",
+    "modelo": "VGV",
+    "versiones": [
+      "U70 PRO 1.5 TURBO"
+    ],
+    "año_min": 2025,
+    "año_max": 2025,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 1500.0,
+      "potencia_hp": 154.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "SSANGYONG",
+    "modelo": "KORANDO",
+    "versiones": [
+      "E-XGI200"
+    ],
+    "año_min": 2020,
+    "año_max": 2020,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 149.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "COREA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "CAMRY",
+    "versiones": [
+      "HYBRID SYNERGY DRIVE BASIC"
+    ],
+    "año_min": 2014,
+    "año_max": 2014,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 2400.0,
+      "potencia_hp": 160.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "HÍBRIDO",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "JAPÓN"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "NEW INNOVA",
+    "versiones": [
+      "ELITE"
+    ],
+    "año_min": 2017,
+    "año_max": 2017,
+    "count": 1,
+    "specs": {
+      "carroceria": "VAN",
+      "motor_cc": 2700.0,
+      "potencia_hp": 166.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "INDONESIA"
+    }
+  },
+  {
+    "marca": "TOYOTA",
+    "modelo": "SIENNA",
+    "versiones": [
+      "AC 3.5"
+    ],
+    "año_min": 2014,
+    "año_max": 2014,
+    "count": 1,
+    "specs": {
+      "carroceria": "VAN",
+      "motor_cc": 3500.0,
+      "potencia_hp": 266.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "ESTADOS UNIDOS"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "AMAROK",
+    "versiones": [
+      "PLUS BITURBO"
+    ],
+    "año_min": 2017,
+    "año_max": 2017,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2000.0,
+      "potencia_hp": 180.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "ARGENTINA"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "FOX",
+    "versiones": [
+      "1.6L STD"
+    ],
+    "año_min": 2005,
+    "año_max": 2005,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1600.0,
+      "potencia_hp": 101.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "NEW JETTA",
+    "versiones": [
+      "3G 2.5L"
+    ],
+    "año_min": 2018,
+    "año_max": 2018,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 2500.0,
+      "potencia_hp": 170.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO",
+      "pais_origen": "MÉXICO"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "PASSAT",
+    "versiones": [
+      "HIGHLINE"
+    ],
+    "año_min": 2009,
+    "año_max": 2009,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1800.0,
+      "potencia_hp": 160.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "ALEMANIA"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "TIGUAN",
+    "versiones": [
+      "HIGHLINE"
+    ],
+    "año_min": 2018,
+    "año_max": 2018,
+    "count": 1,
+    "specs": {
+      "carroceria": "SUV",
+      "motor_cc": 2000.0,
+      "potencia_hp": 180.0,
+      "transmision": "AUTOMÁTICA",
+      "traccion": "4X4",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "MEDIO-ALTO",
+      "pais_origen": "ALEMANIA"
+    }
+  },
+  {
+    "marca": "VOLKSWAGEN",
+    "modelo": "VOYAGE",
+    "versiones": [
+      "MSI PLUS ESTILO"
+    ],
+    "año_min": 2014,
+    "año_max": 2014,
+    "count": 1,
+    "specs": {
+      "carroceria": "SEDÁN",
+      "motor_cc": 1600.0,
+      "potencia_hp": 104.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "BRASIL"
+    }
+  },
+  {
+    "marca": "ZOTYE",
+    "modelo": "Z100",
+    "versiones": [
+      "Z100 1L"
+    ],
+    "año_min": 2019,
+    "año_max": 2019,
+    "count": 1,
+    "specs": {
+      "carroceria": "HATCHBACK",
+      "motor_cc": 1000.0,
+      "potencia_hp": 67.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "GASOLINA",
+      "segmento": "ECONÓMICO",
+      "pais_origen": "CHINA"
+    }
+  },
+  {
+    "marca": "ZX AUTO",
+    "modelo": "TERRALORD",
+    "versiones": [
+      "LUXURY"
+    ],
+    "año_min": 2023,
+    "año_max": 2023,
+    "count": 1,
+    "specs": {
+      "carroceria": "PICKUP",
+      "motor_cc": 2500.0,
+      "potencia_hp": 130.0,
+      "transmision": "MANUAL",
+      "traccion": "4X2",
+      "tipo_combustible": "DIESEL",
+      "segmento": "MEDIO",
+      "pais_origen": "CHINA"
+    }
+  }
+]

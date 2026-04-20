@@ -2,20 +2,17 @@
 Model training module for vehicle valuation ML.
 """
 import os
-import pickle
 import json
 import pandas as pd
 import joblib
 import numpy as np
 from xgboost import XGBRegressor
 from sklearn.model_selection import train_test_split, KFold, cross_validate
-from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
-from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_absolute_error, r2_score, make_scorer
 
 try:
-    from src.feature_config import (
+    from ml.feature_config import (
         CATEGORICAL_COLUMNS,
         FEATURE_ORDER,
         VALIDATION_LIMITS,
@@ -69,11 +66,16 @@ def build_normalized_dataframe(df: pd.DataFrame, include_target: bool = True) ->
         "marca": ["marca", "Marca"],
         "modelo": ["modelo", "Modelo"],
         "color": ["color", "Color"],
-        "provincia": ["provincia", "Agencia", "Provincia"],
-        "tipo": ["tipo", "Línea Negocio", "Tipo Vehiculo"],
+        "provincia": ["provincia", "Provincia"],
         "kilometraje": ["kilometraje", "Recorrido"],
-        "cilindrada": ["cilindrada", "Cilindrada"],
+        "motor_cc": ["motor_cc"],
+        "potencia_hp": ["potencia_hp"],
+        "carroceria": ["carroceria"],
         "transmision": ["transmision", "Transmision"],
+        "tipo_combustible": ["tipo_combustible"],
+        "traccion": ["traccion"],
+        "segmento": ["segmento"],
+        "pais_origen": ["pais_origen"],
     }
     if include_target:
         source_map["target"] = ["precio en el que se compro", "Precio Final Editado"]
@@ -88,37 +90,18 @@ def build_normalized_dataframe(df: pd.DataFrame, include_target: bool = True) ->
     if "modelo" not in normalized.columns:
         normalized["modelo"] = "DESCONOCIDO"
 
-    desc = data.get("Descripción", pd.Series("", index=data.index)).fillna("").astype(str)
-    comments = data.get("Comentario", pd.Series("", index=data.index)).fillna("").astype(str)
-    obs = data.get("Observación Precio", pd.Series("", index=data.index)).fillna("").astype(str)
-    combined_notes = (comments + " " + obs).str.upper()
-
-    if "transmision" not in normalized.columns:
-        normalized["transmision"] = "DESCONOCIDO"
-        normalized.loc[desc.str.contains(r"\bT/A\b|\bCVT\b", case=False, regex=True), "transmision"] = "AUTOMATICA"
-        normalized.loc[desc.str.contains(r"\bT/M\b", case=False, regex=True), "transmision"] = "MANUAL"
-
-    if "combustible" not in normalized.columns:
-        normalized["combustible"] = "DESCONOCIDO"
-        normalized.loc[desc.str.contains(r"HYBRID|HSD|HIBRID", case=False, regex=True), "combustible"] = "HIBRIDO"
-        normalized.loc[desc.str.contains(r"CRDI|DIESEL", case=False, regex=True), "combustible"] = "DIESEL"
-        normalized.loc[desc.str.contains(r"TURBO|VVTI|DUALJET|BOOSTERJET|EFI", case=False, regex=True), "combustible"] = "GASOLINA"
-
-    if "estado_motor" not in normalized.columns:
-        normalized["estado_motor"] = "DESCONOCIDO"
-        normalized.loc[combined_notes.str.contains(r"FALLA|MECAN", regex=True), "estado_motor"] = "REGULAR"
-        normalized.loc[combined_notes.str.contains(r"MANTENIMIENTO|MANTENIMIENTOS EN CASA", regex=True), "estado_motor"] = "BUENO"
-
-    if "estado_carroceria" not in normalized.columns:
-        normalized["estado_carroceria"] = "DESCONOCIDO"
-        normalized.loc[combined_notes.str.contains(r"PINTAR|DETALLES", regex=True), "estado_carroceria"] = "REGULAR"
+    # Fill missing categoricals with DESCONOCIDO
+    for col in ["carroceria", "transmision", "tipo_combustible", "traccion",
+                "segmento", "pais_origen"]:
+        if col not in normalized.columns:
+            normalized[col] = "DESCONOCIDO"
+        else:
+            normalized[col] = normalized[col].fillna("DESCONOCIDO")
 
     normalized["anio"] = pd.to_numeric(normalized.get("anio"), errors="coerce")
     normalized["kilometraje"] = pd.to_numeric(normalized.get("kilometraje"), errors="coerce")
-
-    parsed_cilindrada = _extract_cilindrada_from_description(desc)
-    normalized["cilindrada"] = pd.to_numeric(normalized.get("cilindrada"), errors="coerce")
-    normalized["cilindrada"] = normalized["cilindrada"].fillna(parsed_cilindrada)
+    normalized["motor_cc"] = pd.to_numeric(normalized.get("motor_cc"), errors="coerce")
+    normalized["potencia_hp"] = pd.to_numeric(normalized.get("potencia_hp"), errors="coerce")
 
     if include_target:
         normalized["target"] = pd.to_numeric(normalized.get("target"), errors="coerce")
@@ -176,34 +159,11 @@ def load_and_clean_data(filepath: str) -> pd.DataFrame:
     print(f"\nRemoved duplicates: {before - len(df)}")
 
     required_columns = {
-        "Fecha",
-        "Instancia",
-        "Empresa",
-        "Agencia",
-        "Línea Negocio",
-        "Solicitante",
-        "Coordinador",
-        "Número Avalúo Sugar",
-        "Número Avalúo Balcón",
-        "Identificación",
-        "Apellidos Cliente",
-        "Nombres Cliente",
-        "Teléfono Cliente",
-        "Estado Seguimiento",
-        "Placa",
         "Marca",
         "Modelo",
         "Año",
-        "Color",
         "Recorrido",
-        "Tipo Recorrido",
-        "Descripción",
-        "Comentario",
-        "Precio Nuevo Pricing",
-        "Precio Nuevo Editado",
-        "Precio Final Pricing",
         "Precio Final Editado",
-        "Observación Precio",
     }
 
     missing = [col for col in required_columns if col not in df.columns]
@@ -212,10 +172,13 @@ def load_and_clean_data(filepath: str) -> pd.DataFrame:
         raise ValueError(f"Missing required columns: {missing_sorted}")
 
     pricing_columns = [
-        "Precio Nuevo Pricing",
-        "Precio Nuevo Editado",
-        "Precio Final Pricing",
-        "Precio Final Editado",
+        col for col in [
+            "Precio Nuevo Pricing",
+            "Precio Nuevo Editado",
+            "Precio Final Pricing",
+            "Precio Final Editado",
+        ]
+        if col in df.columns
     ]
 
     # Convert price-like strings to numbers (handles commas, currency signs).
@@ -229,44 +192,46 @@ def load_and_clean_data(filepath: str) -> pd.DataFrame:
         df[col] = pd.to_numeric(cleaned, errors="coerce")
 
     # Also convert key numeric columns commonly used for valuation models.
-    for col in ["Año", "Recorrido", "Identificación", "Teléfono Cliente"]:
-        df[col] = pd.to_numeric(df[col], errors="coerce")
+    for col in ["Año", "Recorrido"]:
+        if col in df.columns:
+            df[col] = pd.to_numeric(df[col], errors="coerce")
 
     target_col = "Precio Final Editado"
-    q1 = df[target_col].quantile(0.25)
-    q3 = df[target_col].quantile(0.75)
-    iqr = q3 - q1
-
-    lower_bound = q1 - 1.5 * iqr
-    upper_bound = q3 + 1.5 * iqr
+    # Use percentile-based capping (1st-99th) instead of IQR.
+    # Vehicle prices are legitimately right-skewed ($3k econobox to $130k
+    # Land Cruiser), so IQR×1.5 clips too aggressively and prevents the
+    # model from learning high-value predictions.
+    lower_bound = df[target_col].quantile(0.01)
+    upper_bound = df[target_col].quantile(0.99)
+    before_clip = len(df)
     df[target_col] = df[target_col].clip(lower=lower_bound, upper=upper_bound)
 
     print(
-        f"Capped '{target_col}' outliers using IQR bounds: "
+        f"Capped '{target_col}' outliers using 1st-99th percentile: "
         f"[{lower_bound:.2f}, {upper_bound:.2f}]"
     )
 
     return df
 
 
-def prepare_features(df: pd.DataFrame):
+def prepare_features(df: pd.DataFrame, output_dir: str = "models"):
     """Prepare model features and target from a vehicle DataFrame.
 
     This function:
     1. Calculates ``antiguedad = 2026 - anio``.
     2. Encodes categorical columns using ``LabelEncoder``.
-    3. Saves each fitted encoder to ``models/`` with ``joblib``.
+    3. Saves each fitted encoder to *output_dir* with ``joblib``.
     4. Returns feature matrix ``X`` and target vector ``y``.
 
-    Expected target column:
-    - ``precio en el que se compro``
+    Args:
+        output_dir: Directory to save encoder files. Defaults to ``models/``.
     """
     normalized = build_normalized_dataframe(df, include_target=True)
 
     if "target" not in normalized.columns:
         raise ValueError("Missing target column. Expected one of: precio en el que se compro, Precio Final Editado")
 
-    required_columns = ["anio", "kilometraje", "cilindrada", *CATEGORICAL_COLUMNS]
+    required_columns = ["anio", "kilometraje", "motor_cc", "potencia_hp", *CATEGORICAL_COLUMNS]
     missing_columns = [col for col in required_columns if col not in normalized.columns]
     if missing_columns:
         missing = ", ".join(missing_columns)
@@ -274,16 +239,29 @@ def prepare_features(df: pd.DataFrame):
 
     normalized = normalized.dropna(subset=["anio", "kilometraje", "target"]).copy()
 
-    cilindrada_min = VALIDATION_LIMITS["cilindrada"]["min"]
-    cilindrada_max = VALIDATION_LIMITS["cilindrada"]["max"]
+    # Fill motor_cc — validate range (600-8000 cc) and fill missing with median
+    motor_cc_min = VALIDATION_LIMITS["motor_cc"]["min"]
+    motor_cc_max = VALIDATION_LIMITS["motor_cc"]["max"]
     normalized.loc[
-        ~normalized["cilindrada"].between(cilindrada_min, cilindrada_max, inclusive="both"),
-        "cilindrada",
+        ~normalized["motor_cc"].between(motor_cc_min, motor_cc_max, inclusive="both"),
+        "motor_cc",
     ] = np.nan
-    if normalized["cilindrada"].isna().all():
-        normalized["cilindrada"] = 1.6
+    if normalized["motor_cc"].isna().all():
+        normalized["motor_cc"] = 1600.0
     else:
-        normalized["cilindrada"] = normalized["cilindrada"].fillna(normalized["cilindrada"].median())
+        normalized["motor_cc"] = normalized["motor_cc"].fillna(normalized["motor_cc"].median())
+
+    # Fill potencia_hp — validate range and fill missing with median
+    hp_min = VALIDATION_LIMITS["potencia_hp"]["min"]
+    hp_max = VALIDATION_LIMITS["potencia_hp"]["max"]
+    normalized.loc[
+        ~normalized["potencia_hp"].between(hp_min, hp_max, inclusive="both"),
+        "potencia_hp",
+    ] = np.nan
+    if normalized["potencia_hp"].isna().all():
+        normalized["potencia_hp"] = 120.0
+    else:
+        normalized["potencia_hp"] = normalized["potencia_hp"].fillna(normalized["potencia_hp"].median())
 
     normalized["anio"] = normalized["anio"].astype(int)
     normalized["kilometraje"] = normalized["kilometraje"].astype(float).clip(lower=0)
@@ -292,7 +270,7 @@ def prepare_features(df: pd.DataFrame):
 
     data = normalized
 
-    os.makedirs("models", exist_ok=True)
+    os.makedirs(output_dir, exist_ok=True)
     for column in CATEGORICAL_COLUMNS:
         encoder = LabelEncoder()
         data[column] = (
@@ -303,7 +281,7 @@ def prepare_features(df: pd.DataFrame):
             .str.upper()
         )
         data[column] = encoder.fit_transform(data[column])
-        encoder_path = os.path.join("models", f"{column}_label_encoder.joblib")
+        encoder_path = os.path.join(output_dir, f"{column}_label_encoder.joblib")
         joblib.dump(encoder, encoder_path)
 
     y = data["target"]
@@ -439,56 +417,9 @@ def export_metadata(df: pd.DataFrame, model, feature_cols):
     return metadata_path
 
 
-class VehicleValuationModel:
-    """Train and save vehicle valuation model."""
-    
-    def __init__(self, model_path: str = "models/vehicle_model.pkl"):
-        self.model_path = model_path
-        self.model = None
-        self.scaler = StandardScaler()
-    
-    def load_data(self, data_path: str) -> pd.DataFrame:
-        """Load training data from CSV."""
-        if not os.path.exists(data_path):
-            raise FileNotFoundError(f"Data file not found: {data_path}")
-        return pd.read_csv(data_path)
-    
-    def train(self, X_train, y_train):
-        """Train the model."""
-        self.model = RandomForestRegressor(n_estimators=100, random_state=42)
-        X_scaled = self.scaler.fit_transform(X_train)
-        self.model.fit(X_scaled, y_train)
-        print("Model trained successfully")
-    
-    def save_model(self):
-        """Save model and scaler to disk."""
-        os.makedirs(os.path.dirname(self.model_path) or ".", exist_ok=True)
-        with open(self.model_path, "wb") as f:
-            pickle.dump(self.model, f)
-        
-        scaler_path = self.model_path.replace(".pkl", "_scaler.pkl")
-        with open(scaler_path, "wb") as f:
-            pickle.dump(self.scaler, f)
-        print(f"Model saved to {self.model_path}")
-    
-    def load_model(self):
-        """Load model and scaler from disk."""
-        if not os.path.exists(self.model_path):
-            raise FileNotFoundError(f"Model file not found: {self.model_path}")
-        
-        with open(self.model_path, "rb") as f:
-            self.model = pickle.load(f)
-        
-        scaler_path = self.model_path.replace(".pkl", "_scaler.pkl")
-        if os.path.exists(scaler_path):
-            with open(scaler_path, "rb") as f:
-                self.scaler = pickle.load(f)
-        print(f"Model loaded from {self.model_path}")
-
-
 if __name__ == "__main__":
     print("Vehicle Valuation Model Training Module")
-    dataset_path = os.path.join("data", "data.csv")
+    dataset_path = os.path.join("data", "data_limpia_entrenamiento.csv")
     cleaned_df = load_and_clean_data(dataset_path)
     X_data, y_data = prepare_features(cleaned_df)
     trained_model, training_metrics = train_model(X_data, y_data)
